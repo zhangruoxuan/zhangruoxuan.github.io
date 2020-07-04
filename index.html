@@ -152,27 +152,46 @@
           <div id="js-content" class="content-ll">
             
   
-    <article id="post-page" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-动态规划" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2020/07/04/page/">page</a>
+      <a class="article-title" href="/2020/07/04/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/">动态规划</a>
     </h1>
   
 
         
-        <a href="/2020/07/04/page/" class="archive-article-date">
-  	<time datetime="2020-07-04T04:15:25.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-04</time>
+        <a href="/2020/07/04/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" class="archive-article-date">
+  	<time datetime="2020-07-04T06:58:31.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-04</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        
+        <h1 id="动态规划"><a href="#动态规划" class="headerlink" title="动态规划"></a>动态规划</h1><p>动态规划是我最最最最最最差的算法<br>因为我看不出来</p>
+<h2 id="一些理解和定义"><a href="#一些理解和定义" class="headerlink" title="一些理解和定义"></a>一些理解和定义</h2><p>一般来说，只要问题可以划分成规模更小的子问题，并且原问题的最优解中包含了子问题的最优解，则可以考虑用动态规划解决。动态规划的实质是分治思想和解决冗余，因此，动态规划是一种将问题实例分解为更小的、相似的子问题，并存储子问题的解而避免计算重复的子问题，以解决最优化问题的算法策略。<br>由此可知，动态规划法与分治法和贪心法类似，它们都是将问题实例归纳为更小的、相似的子问题，并通过求解子问题产生一个全局最优解。其中贪心法的当前选择可能要依赖已经作出的所有选择，但不依赖于有待于做出的选择和子问题。因此贪心法自顶向下，一步一步地作出贪心选择；而分治法中的各个子问题是独立的 (即不包含公共的子子问题)，因此一旦递归地求出各子问题的解后，便可自下而上地将子问题的解合并成问题的解。但不足的是，如果当前选择可能要依赖子问题的解时，则难以通过局部的贪心策略达到全局最优解；如果各子问题是不独立的，则分治法要做许多不必要的工作，重复地解公共的子问题。解决上述问题的办法是利用动态规划。该方法主要应用于最优化问题，这类问题会有多种可能的解，每个解都有一个值，而动态规划找出其中最优(最大或最小)值的解。若存在若干个取最优值的解的话，它只取其中的一个。在求解过程中，该方法也是通过求解局部子问题的解达到全局最优解，但与分治法和贪心法不同的是，动态规划允许这些子问题不独立，也允许其通过自身子问题的解作出选择，该方法对每一个子问题只解一次，并将结果保存起来，避免每次碰到时都要重复计算。因此，动态规划法所针对的问题有一个显著的特征，即它所对应的子问题树中的子问题呈现大量的重复。动态规划法的关键就在于，对于重复出现的子问题，只在第一次遇到时加以求解，并把答案保存起来，让以后再遇到时直接引用，不必重新求解。</p>
+<h4 id="关键是"><a href="#关键是" class="headerlink" title="关键是"></a>关键是</h4><p>动态规划可以把子问题存起来,空间换时间<br>要有决策，转移方程，边界条件，状态表示（数组）</p>
+<h4 id="抄自别人的性质"><a href="#抄自别人的性质" class="headerlink" title="抄自别人的性质"></a>抄自别人的性质</h4><p>能采用动态规划求解的问题的一般要具有3个性质：<br>（1）最优化原理：假设问题的最优解所包括的子问题的解也是最优的，就称该问题具有最优子结构，即满足最优化原理。<br>（2）无后效性：即某阶段状态一旦确定。就不受这个状态以后决策的影响。也就是说，某状态以后的过程不会影响曾经的状态。仅仅与当前状态有关；<br>（3）有重叠子问题：即子问题之间是不独立的，一个子问题在下一阶段决策中可能被多次使用到（该性质并非动态规划适用的必要条件，可是假设没有这条性质。动态规划算法同其它算法相比就不具备优势）。</p>
+<h2 id="背包问题"><a href="#背包问题" class="headerlink" title="背包问题"></a>背包问题</h2><p>动态规划最经典的题</p>
+<h4 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">假设我们有n件物品，分别编号为1,2,…n。其中编号为i的物品价值Vi,它的重量为Wi。为了简化问题，假设价值和重量都是整数。现在假设我们有一个背包，它能够承载的重量是W。现在，我们希望王背包里装这些物品，使得包里装的物品价值最大化，那么我们该如何选择装的物品？</span><br></pre></td></tr></table></figure>
+<h4 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h4><p>要是贪心的话，这道题要顾及到两个变量就有点难受<br>既然要求最优解<br>那就想到动态规划<br>那就需要分解问题<br>我们可以考虑有一个二维数组v[i]][w]表示z当选择到第i个物品时，在满足重量小于等于w的前提下，vlaue最大。<br>则我们可以得到转移方程</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">v[i][w]&#x3D;max(v[i-1][w-w[i]]+value[i],v[i-1][w])</span><br></pre></td></tr></table></figure>
+<p>表示到第i 个商品的时候要么放要么不放<br>放的话那就需要先腾出w[i]的重量所以是v[i-1][w-w[i]]再加上第i个产品的value<br>要是不放就取v[i-1][w]</p>
+<h2 id="找零钱问题"><a href="#找零钱问题" class="headerlink" title="找零钱问题"></a>找零钱问题</h2><h4 id="问题描述-1"><a href="#问题描述-1" class="headerlink" title="问题描述"></a>问题描述</h4><p>假设你是一名超市收银员，现有n种不同面值的货币，每种面值的货币可以使用任意张。顾客结账时，你需要找给顾客aim元零钱，你可以给出多少种方法。</p>
+<h4 id="问题分析"><a href="#问题分析" class="headerlink" title="问题分析"></a>问题分析</h4><p>首先肯定要确定这个问题，一看就和背包问题很相似，动态规划</p>
+<p>1.确定划分<br>有两个限制条件一个是n种货币数，还有aim的总数<br>所以有1到n和总数0到aim的划分<br>所以确定[n][mid+1]的二维数组<br>2.确定状态和状态变量<br>dp[i][[j]克表示在判断到i个货币时，aim=j的情况下的方法数<br>3.确定决策和状态方程<br>当到第i 个商品要求找零j时i可以用或者不用，不用就是dp[i-1][j]种,用的话又分了用几个级dp[i-1][j-v[i]],dp[i-1][j-2v[i]]…..<br>后面这些相加其实是dp[i][j-v[i]]<br>所以转移方程</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dp[i][[j]&#x3D;dp[i][j-v[i]]+dp[i-1][j]</span><br></pre></td></tr></table></figure>
+<p>4.边界条件<br>i=0和y=0时都是0；<br>j-v[i]&gt;0</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;iostream&gt;</span><br><span class="line">#include&lt;algorithm&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">int main()&#123;</span><br><span class="line">	int n,dp[100][100],value[100],aim;</span><br><span class="line">	int i,j,k;</span><br><span class="line">	cin&gt;&gt;n;</span><br><span class="line">	for(i&#x3D;0;i&lt;n;i++)&#123;</span><br><span class="line">		cin&gt;&gt;value[i];</span><br><span class="line">	&#125;</span><br><span class="line">	cin&gt;&gt;aim;</span><br><span class="line">	for(i&#x3D;0;i&lt;&#x3D;n;i++)&#123;</span><br><span class="line">		for(j&#x3D;0;j&lt;&#x3D;aim;j++)&#123;</span><br><span class="line">			if(j&#x3D;&#x3D;0)dp[i][j]&#x3D;1;</span><br><span class="line">			else if(i&#x3D;&#x3D;0&amp;&amp;j%value[0]&#x3D;&#x3D;0)dp[i][j]&#x3D;1;</span><br><span class="line">			else if(j-value[i]&lt;0)dp[i][j]&#x3D;dp[i-1][j];</span><br><span class="line">			else dp[i][j]&#x3D;dp[i][j-value[i]]+dp[i-1][j];</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	cout&lt;&lt;dp[n][aim];</span><br><span class="line">	return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这个也可以用DFS做<br>只不过可能时间方面会有问题</p>
+<h3 id="最大子段和"><a href="#最大子段和" class="headerlink" title="最大子段和"></a>最大子段和</h3><p>在最大子段中任何前i项的和都不可能小于0<br>所以用c[i]表示前i项必须包含a[i]的向前延申的字段和<br>转移方程 c[i]=max(c[i-1]+a[i],a[i])<br>这个问题也可以用分治思想将子段分成两个部分左右那么最大子段就是左右最大子段和在中点附近的最大子段<br>因为这样算最大子段的时候用到了前缀和的思想降低了算法复杂度<br>分治思想代码</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">int maxstring(int l,int r)&#123;</span><br><span class="line">	if(l&#x3D;&#x3D;r)return a[l];</span><br><span class="line">	int leftmax&#x3D;maxstring(l,(l+r)&#x2F;2);</span><br><span class="line">	int rightmax&#x3D;maxstring((l+r)&#x2F;2,r);</span><br><span class="line">	int leftbordermax&#x3D;0,rightbordermax&#x3D;0;</span><br><span class="line">	mid&#x3D;(l+r)&#x2F;2;</span><br><span class="line">	int k&#x3D;0;</span><br><span class="line">	for(int i&#x3D;mid;i&gt;&#x3D;l;i--)&#123;</span><br><span class="line">		k&#x3D;+a[i];</span><br><span class="line">		if(k&gt;leftbordermax)leftbordermax&#x3D;k;</span><br><span class="line">	&#125;</span><br><span class="line">	for(int i&#x3D;mid;i&lt;&#x3D;r;i++)&#123;</span><br><span class="line">		k&#x3D;+a[i];</span><br><span class="line">		if(k&gt;rightbordermax)rightbordermax&#x3D;k;</span><br><span class="line">	&#125;</span><br><span class="line">	int border&#x3D;rightbordermax+leftbordermax;</span><br><span class="line">	return max(leftmax,rightmax,border);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="动规，贪心，搜索，递推，递归"><a href="#动规，贪心，搜索，递推，递归" class="headerlink" title="动规，贪心，搜索，递推，递归"></a>动规，贪心，搜索，递推，递归</h4><p>以前听一个老教授说，只有知道了一个事物的名字，你才有掌握它的能力，虽然看好多题的时候我就知道这些题要怎么做，思路清晰的很，但实话说，我不知道他具体属于那个算法思想，其实遮掩啊哥哥还是一种对算法思想并不熟悉的表现，所以稍稍总结一下吧。<br>我觉得这几个算法思想还是有一点点关系的<br>在递推和递归方面，递归自顶向下，只求用到的子问题的解，省时间费空间，而递推是自下而上，都求了一边，是费时间省空间<br>在动态规划方面，用二维数组来储存了所有子问题的解，用到了记忆化搜索的思想，一个状态的解需要前面状态的结论，无后效性，动态规划不仅仅用于寻找最优解的问题，许多搜索性问题我觉得用动态规划反而更好思考，而且性能更好，他在某些方面和BFS还是很像的。<br>搜索 搜索的下一状态和以前的状态有关，比如说迷宫问题，你需要记录之前走过的点吧，这叫搜索,可以用来穷举，比如蓝桥杯模拟最后一题<br>贪心 只记录最优解，下一个阶段的最优解和上面相同</p>
+
       
 
       
@@ -180,11 +199,109 @@
     <div class="article-info article-info-index">
       
       
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">algorithm</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
       
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2020/07/04/page/">展开全文 >></a>
+          <a class="article-more-a" href="/2020/07/04/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-一些有趣的题" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/05/12/%E4%B8%80%E4%BA%9B%E6%9C%89%E8%B6%A3%E7%9A%84%E9%A2%98/">一些有趣的题</a>
+    </h1>
+  
+
+        
+        <a href="/2020/05/12/%E4%B8%80%E4%BA%9B%E6%9C%89%E8%B6%A3%E7%9A%84%E9%A2%98/" class="archive-article-date">
+  	<time datetime="2020-05-12T06:59:53.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-12</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="一些有趣的题"><a href="#一些有趣的题" class="headerlink" title="一些有趣的题"></a>一些有趣的题</h1><p>我又不想写作业不想复习（虽然我天天这样<br>今天太伤心了没有被青峰翻<br>那就写两道算法吧</p>
+<h2 id="最大算式"><a href="#最大算式" class="headerlink" title="最大算式"></a>最大算式</h2><p>典型动态规划</p>
+<h4 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">题目很简单，给出N个数字，不改变它们的相对位置，在中间加入K个乘号和N-K-1个加号，（括号随便加）使最终结果尽量大。因为乘号和加号一共就是N-1个了，所以恰好每两个相邻数字之间都有一个符号。例如：　　N&#x3D;5，K&#x3D;2，5个数字分别为1、2、3、4、5，可以加成：　　1*2*(3+4+5)&#x3D;24　　1*(2+3)*(4+5)&#x3D;45　　(1*2+3)*(4+5)&#x3D;45　　……</span><br></pre></td></tr></table></figure>
+<p>算法思想：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">用dp[i][j]保留前i个数中含有j个乘号的最大的结果</span><br><span class="line">同时有前缀和数组sum[i]</span><br><span class="line">这是一个典型的动态规划的问题，首先根据sum[i]可以初始化dp[i][0]，然后一列一列求。先求第二列，j&#x3D;1的情况。</span><br><span class="line">dp[2][1] &#x3D; dp[1][0] * num[2] &#x3D; 2</span><br><span class="line">dp[3][1] &#x3D; max(dp[2][0]num[3], dp[1][0](num[2]+num[3]))</span><br><span class="line">dp[4][1] &#x3D; max(dp[3][0]num[4], dp[2][0](num[3]+num[4]), dp[1][0](num[2]+num[3]+num[4]))</span><br><span class="line">所以，我们得到dp[i][j] &#x3D; max(dp[i][j], dp[p][j-1](sum[i]-sum[p])) (p表示插入的乘号的位置，1&lt;&#x3D;p&lt;i)</span><br></pre></td></tr></table></figure>
+<h2 id="未名湖边的烦恼"><a href="#未名湖边的烦恼" class="headerlink" title="未名湖边的烦恼"></a>未名湖边的烦恼</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">　每年冬天，北大未名湖上都是滑冰的好地方。北大体育组准备了许多冰鞋，可是人太多了，每天下午收工后，常常一双冰鞋都不剩。　　每天早上，租鞋窗口都会排起长龙，假设有还鞋的m个，有需要租鞋的n个。现在的问题是，这些人有多少种排法，可以避免出现体育组没有冰鞋可租的尴尬场面。（两个同样需求的人（比如都是租鞋或都是还鞋）交换位置是同一种排法）</span><br></pre></td></tr></table></figure>
+<p>我看到这道题的时候第一想法就是动规啊</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">当m&lt;n时dp[m][n]&#x3D;0;</span><br><span class="line">dp[m][n]&#x3D;dp[m-1][n]+dp[m][n-1];</span><br></pre></td></tr></table></figure>
+<h3 id="和为T"><a href="#和为T" class="headerlink" title="和为T"></a>和为T</h3><h5 id="问题描述-1"><a href="#问题描述-1" class="headerlink" title="问题描述"></a>问题描述</h5><p>　从一个大小为n的整数集中选取一些元素，使得它们的和等于给定的值T。每个元素限选一次，不能一个都不选。</p>
+<h5 id="输入格式"><a href="#输入格式" class="headerlink" title="输入格式"></a>输入格式</h5><p>　第一行一个正整数n，表示整数集内元素的个数。第二行n个整数，用空格隔开。第三行一个整数T，表示要达到的和。</p>
+<h4 id="输出格式"><a href="#输出格式" class="headerlink" title="输出格式"></a>输出格式</h4><p>输出有若干行，每行输出一组解，即所选取的数字，按照输入中的顺序排列。<br>若有多组解，优先输出不包含第n个整数的；若都包含或都不包含，优先输出不包含第n-1个整数的，依次类推。<br>最后一行输出总方案数。</p>
+<h4 id="想法"><a href="#想法" class="headerlink" title="想法"></a>想法</h4><p>哈！这不深搜吗！要列举走过的路径，和个数；</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;iostream&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">int n,m;</span><br><span class="line">int vis[25];</span><br><span class="line">int a[25];</span><br><span class="line">int ans,num;</span><br><span class="line">void DFS(int i,int sum)&#123;</span><br><span class="line">	if(sum&#x3D;&#x3D;ans&amp;&amp;i&#x3D;&#x3D;n)&#123;</span><br><span class="line">		num++;</span><br><span class="line">		int p&#x3D;0;</span><br><span class="line">		for(int j&#x3D;0;j&lt;n;j++)&#123;</span><br><span class="line">			if(vis[j])&#123;</span><br><span class="line">				cout&lt;&lt;a[j]&lt;&lt;&quot; &quot;;</span><br><span class="line">				p++;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		if(p&gt;0)	cout&lt;&lt;endl;</span><br><span class="line">		return ;</span><br><span class="line">	&#125;</span><br><span class="line">&#x2F;&#x2F;	if(sum&gt;ans)return ;</span><br><span class="line">	if(i&gt;&#x3D;n)return ;</span><br><span class="line">	else&#123;</span><br><span class="line">		vis[i]&#x3D;1;</span><br><span class="line">		DFS(i+1,sum+a[i]);</span><br><span class="line">		vis[i]&#x3D;0;</span><br><span class="line">		DFS(i+1,sum);</span><br><span class="line">	&#125;</span><br><span class="line">&#125; </span><br><span class="line">int main()&#123;</span><br><span class="line">	cin&gt;&gt;n;</span><br><span class="line">	for(int i&#x3D;0;i&lt;n;i++)&#123;</span><br><span class="line">		cin&gt;&gt;a[i];</span><br><span class="line">		vis[i]&#x3D;0;</span><br><span class="line">	&#125; </span><br><span class="line">	cin&gt;&gt;ans;</span><br><span class="line">	DFS(0,0); </span><br><span class="line">	if(ans&#x3D;&#x3D;0)cout&lt;&lt;num-1;</span><br><span class="line">	else cout&lt;&lt;num;</span><br><span class="line">	return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>注意，要是要求和为0 的话要减去一种，注意vis的使用，跳出后记得吧vis=0<br>记得跳出递归的条件不只有sum==ans还有i==n这个很重要！！！</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">algorithm</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/05/12/%E4%B8%80%E4%BA%9B%E6%9C%89%E8%B6%A3%E7%9A%84%E9%A2%98/">展开全文 >></a>
         </p>
       
 
