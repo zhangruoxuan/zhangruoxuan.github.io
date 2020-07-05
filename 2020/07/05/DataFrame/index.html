@@ -16,9 +16,9 @@
 <meta property="og:description" content="dataframe简单知识：1、DataFrame是一种数据框结构,相当于是一个矩阵形式，单元格可以存放数值、字符串等，这和excel表很像；2、DataFrame是有 行（index）和 列（columns）可以设置的； 创建字典 1pd.DataFrame(dict,index&#x3D;list(&#39;abc&#39;))&#x2F;&#x2F;index&#x3D;[0] 列表 1pd">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2020-07-05T09:26:38.000Z">
-<meta property="article:modified_time" content="2020-07-05T09:27:23.595Z">
+<meta property="article:modified_time" content="2020-07-05T09:42:57.196Z">
 <meta property="article:author" content="张大牙">
-<meta property="article:tag" content="python pandas 机器学习">
+<meta property="article:tag" content="python">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
@@ -197,13 +197,12 @@
 <p><strong>pd.Series</strong></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">e&#x3D;pd.Series(list(&#39;abc&#39;)) </span><br><span class="line">a[&#39;c&#39;]&#x3D;e</span><br></pre></td></tr></table></figure>
 <p><strong>pd.append</strong><br>将data以添加行的方式添加到原data，并返回一个新的对象<br>Append rows of other to the end of caller, returning a new object.<br>如果列不重合，则以新列的方式添加</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&#96;&#96;&#96;</span><br><span class="line">### 缺省值</span><br></pre></td></tr></table></figure>
-<p>pd.isnull(df)//查看所有数据的缺省结果<br>pd.isnull(df[‘player’])<br>df.dropna(axis=0,how=’any’,thresh=None.subset=None,inplace=False)//删除缺省值 any表示只要存在任何缺省值就删除 all表示所有都是nan才删除<br>df.fillna(value=0)//用0填充缺失值<br>len(df.loc[(df[‘a’].isnull(),’a’)])//某列缺失值的个数</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">### 数据查询</span><br></pre></td></tr></table></figure>
-<p>df[(df[‘height’]&gt;=200)|(df[‘height’]&lt;100)]#也可以用&amp;<br>df.loc[(df[‘height’]&gt;=200)|(df[‘height’]&lt;100)]</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">### 分组计算</span><br></pre></td></tr></table></figure>
-<p>df.groupby(‘name’).size()</p>
-<pre><code></code></pre>
+<h3 id="缺省值"><a href="#缺省值" class="headerlink" title="缺省值"></a>缺省值</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">pd.isnull(df)&#x2F;&#x2F;查看所有数据的缺省结果</span><br><span class="line">pd.isnull(df[&#39;player&#39;])</span><br><span class="line">df.dropna(axis&#x3D;0,how&#x3D;&#39;any&#39;,thresh&#x3D;None.subset&#x3D;None,inplace&#x3D;False)&#x2F;&#x2F;删除缺省值 any表示只要存在任何缺省值就删除 all表示所有都是nan才删除</span><br><span class="line">df.fillna(value&#x3D;0)&#x2F;&#x2F;用0填充缺失值</span><br><span class="line">len(df.loc[(df[&#39;a&#39;].isnull(),&#39;a&#39;)])&#x2F;&#x2F;某列缺失值的个数</span><br></pre></td></tr></table></figure>
+
+<h3 id="数据查询"><a href="#数据查询" class="headerlink" title="数据查询"></a>数据查询</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">df[(df[&#39;height&#39;]&gt;&#x3D;200)|(df[&#39;height&#39;]&lt;100)]#也可以用&amp;</span><br><span class="line">df.loc[(df[&#39;height&#39;]&gt;&#x3D;200)|(df[&#39;height&#39;]&lt;100)]</span><br></pre></td></tr></table></figure>
+<h3 id="分组计算"><a href="#分组计算" class="headerlink" title="分组计算"></a>分组计算</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df.groupby(&#39;name&#39;).size()</span><br></pre></td></tr></table></figure>
+
+
       
 
       
@@ -237,7 +236,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">python pandas 机器学习</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">python</a>
         		</li>
       		
 		</ul>
@@ -435,7 +434,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">python pandas 机器学习</a>
+                <a href="javascript:void(0)" class="js-tag color2">python</a>
               </li>
             
             <div class="clearfix"></div>
