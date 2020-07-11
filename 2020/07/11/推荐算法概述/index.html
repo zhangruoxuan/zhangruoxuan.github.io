@@ -6,19 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>线段树 | 张大牙のblog</title>
+  <title>推荐算法概述 | 张大牙のblog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="线段树线段树是算法竞赛中常用的用来维护 区间信息 的数据结构。线段树可以在 logn 的时间复杂度内实现单点修改、区间修改、区间查询（区间求和，求区间最大值，求区间最小值）等操作。 线段树和树状数组的区别树状数组能有的操作，线段树一定有；线段树有的操作，树状数组不一定有。但树状数组的代码更短，思维也更清晰。 线段树线段树是一个完全二s叉树 线段树将每个长度不为  n的区间划分成左右两个区间递归求解">
+  <meta name="description" content="推荐算法概述数据采集层 数据存储层 离线推荐层 在线推荐层推荐系统：算法 ui 数据 领域知识两个重要部分是数据和算法 数据 用户用户信息用户行为用户关系 好友 关注 123456789graph TD用户行为 --&gt; D[显式行为]用户行为 --&gt; E[隐式行为]D --&gt;F[购买]D --&gt;A[收藏]E --&gt; 停留时间E --&gt;跳转E --&gt;点击D">
 <meta property="og:type" content="article">
-<meta property="og:title" content="线段树">
-<meta property="og:url" content="http://yoursite.com/2020/04/11/%E7%BA%BF%E6%AE%B5%E6%A0%91/index.html">
+<meta property="og:title" content="推荐算法概述">
+<meta property="og:url" content="http://yoursite.com/2020/07/11/%E6%8E%A8%E8%8D%90%E7%AE%97%E6%B3%95%E6%A6%82%E8%BF%B0/index.html">
 <meta property="og:site_name" content="张大牙のblog">
-<meta property="og:description" content="线段树线段树是算法竞赛中常用的用来维护 区间信息 的数据结构。线段树可以在 logn 的时间复杂度内实现单点修改、区间修改、区间查询（区间求和，求区间最大值，求区间最小值）等操作。 线段树和树状数组的区别树状数组能有的操作，线段树一定有；线段树有的操作，树状数组不一定有。但树状数组的代码更短，思维也更清晰。 线段树线段树是一个完全二s叉树 线段树将每个长度不为  n的区间划分成左右两个区间递归求解">
+<meta property="og:description" content="推荐算法概述数据采集层 数据存储层 离线推荐层 在线推荐层推荐系统：算法 ui 数据 领域知识两个重要部分是数据和算法 数据 用户用户信息用户行为用户关系 好友 关注 123456789graph TD用户行为 --&gt; D[显式行为]用户行为 --&gt; E[隐式行为]D --&gt;F[购买]D --&gt;A[收藏]E --&gt; 停留时间E --&gt;跳转E --&gt;点击D">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2020-04-11T14:12:17.000Z">
-<meta property="article:modified_time" content="2020-07-04T04:23:39.105Z">
+<meta property="article:published_time" content="2020-07-11T07:48:11.000Z">
+<meta property="article:modified_time" content="2020-07-11T07:48:42.982Z">
 <meta property="article:author" content="张大牙">
-<meta property="article:tag" content="algorithm">
+<meta property="article:tag" content="推荐算法">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="张大牙のblog" type="application/atom+xml">
@@ -155,39 +155,111 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-线段树" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-推荐算法概述" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      线段树
+      推荐算法概述
     </h1>
   
 
         
-        <a href="/2020/04/11/%E7%BA%BF%E6%AE%B5%E6%A0%91/" class="archive-article-date">
-  	<time datetime="2020-04-11T14:12:17.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-11</time>
+        <a href="/2020/07/11/%E6%8E%A8%E8%8D%90%E7%AE%97%E6%B3%95%E6%A6%82%E8%BF%B0/" class="archive-article-date">
+  	<time datetime="2020-07-11T07:48:11.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-11</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="线段树"><a href="#线段树" class="headerlink" title="线段树"></a>线段树</h1><p>线段树是算法竞赛中常用的用来维护 区间信息 的数据结构。<br>线段树可以在 logn 的时间复杂度内实现单点修改、区间修改、区间查询（区间求和，求区间最大值，求区间最小值）等操作。</p>
-<h2 id="线段树和树状数组的区别"><a href="#线段树和树状数组的区别" class="headerlink" title="线段树和树状数组的区别"></a>线段树和树状数组的区别</h2><p>树状数组能有的操作，线段树一定有；线段树有的操作，树状数组不一定有。<br>但树状数组的代码更短，思维也更清晰。</p>
-<h2 id="线段树-1"><a href="#线段树-1" class="headerlink" title="线段树"></a>线段树</h2><p>线段树是一个完全二s叉树</p>
-<p>线段树将每个长度不为  n的区间划分成左右两个区间递归求解，把整个线段划分为一个树形结构，通过合并左右两区间信息来求得该区间的信息。这种数据结构可以方便的进行大部分的区间操作。</p>
-<p>每个节点都为自己子节点的和</p>
-<p> d[i]的左儿子节点就是 d[2i] ，d[i]  的右儿子节点就是 d[2i+1] 。如果 d[i] 表示的是区间 [s,t] 的话，那么 d[i] 的左儿子节点表示的是区间 [s,s+t/2] ，右儿子表示的是区间  [s+t/2+1,t] 。</p>
-<p> 父节点不仅可以表示子节点的和还可以表示子节点的最大值最小值等，只要是区间特征就行。</p>
-<h4 id="基本数据结构"><a href="#基本数据结构" class="headerlink" title="基本数据结构"></a>基本数据结构</h4> <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">struct point&#123;</span><br><span class="line">	int l,r,data;</span><br><span class="line">&#125;;</span><br><span class="line">&#96;</span><br></pre></td></tr></table></figure>
-<h4 id="创建"><a href="#创建" class="headerlink" title="创建"></a>创建</h4><p> 递归<br> 先创建好自己的叶子节点自己才能创建好<br> <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"> void create_tree(int l,int r,int root)&#123;</span><br><span class="line">	if(l&#x3D;&#x3D;r)&#123;</span><br><span class="line">		tree[root].l&#x3D;l;</span><br><span class="line">		tree[root].r&#x3D;r;</span><br><span class="line">		t[root].data&#x3D;a[l];return ;</span><br><span class="line"> &#125;</span><br><span class="line"> mid&#x3D;(l+r)&#x2F;2;</span><br><span class="line"> create_tree(l,mid,2*root);</span><br><span class="line"> create_tree(mid+1,r,2*root+1);</span><br><span class="line"> tree[root].data&#x3D;tree[2*root]+tree[2*root+1];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<h4 id="更新"><a href="#更新" class="headerlink" title="更新"></a>更新</h4><p>从根节点开始查询，找到后向上回溯更新</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">void  update(int root,int n,int x)</span><br><span class="line">  &#123;</span><br><span class="line">  	if(t[root].l&#x3D;&#x3D;tree[root].r)</span><br><span class="line">  	&#123;</span><br><span class="line">  		tree[root].data&#x3D;x;</span><br><span class="line">  		return ;</span><br><span class="line">   &#125;</span><br><span class="line">   if(mid&gt;&#x3D;n)update(2*root,n,x);</span><br><span class="line">   else update(2*root+1,n,x);</span><br><span class="line">   tree[root].data&#x3D;tree[2*root].data+tree[2*root+1].data</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h4 id="查找"><a href="#查找" class="headerlink" title="查找"></a>查找</h4><p>查找某一个区间的和</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">int inquire(int l,int r,int root)</span><br><span class="line"> &#123;</span><br><span class="line"> 	if(t[root].l&gt;&#x3D;l&amp;&amp;t[root].r&lt;&#x3D;r)return t[root].data;</span><br><span class="line"> 	mid&#x3D;(l+r)&#x2F;2;</span><br><span class="line">         int sum&#x3D;0;</span><br><span class="line"> 	if(mid&gt;&#x3D;r) sum&#x3D;inquire(l,r,2*root);</span><br><span class="line"> 	else if(mid&lt;l)sum+&#x3D;inquire(l,r,2*root+1);</span><br><span class="line"> 	else return sum;</span><br><span class="line">   &#125;  </span><br><span class="line">&#96;</span><br></pre></td></tr></table></figure>
+        <h2 id="推荐算法概述"><a href="#推荐算法概述" class="headerlink" title="推荐算法概述"></a>推荐算法概述</h2><p>数据采集层 数据存储层 离线推荐层 在线推荐层<br>推荐系统：算法 ui 数据 领域知识<br>两个重要部分是数据和算法</p>
+<h3 id="数据"><a href="#数据" class="headerlink" title="数据"></a>数据</h3><ul>
+<li>用户<br>用户信息<br>用户行为<br>用户关系 好友 关注 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">graph TD</span><br><span class="line">用户行为 --&gt; D[显式行为]</span><br><span class="line">用户行为 --&gt; E[隐式行为]</span><br><span class="line">D --&gt;F[购买]</span><br><span class="line">D --&gt;A[收藏]</span><br><span class="line">E --&gt; 停留时间</span><br><span class="line">E --&gt;跳转</span><br><span class="line">E --&gt;点击</span><br><span class="line">D --&gt;B[浏览 关注等]</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">graph TD</span><br><span class="line">用户关系 --&gt; D[显式行为]</span><br><span class="line">用户关系 --&gt; E[隐式行为]</span><br><span class="line">D --&gt;同学</span><br><span class="line">D --&gt;亲人</span><br><span class="line">E --&gt; 关注&#x2F;被关注</span><br><span class="line">E --&gt;加为好友</span><br><span class="line">E --&gt;转发点赞互动</span><br></pre></td></tr></table></figure>
+隐式关系更有用</li>
+<li>物品</li>
+</ul>
+<p><strong>总结</strong><br>数据是基石<br>用户行为可以真实反映每个用户的偏好和习惯<br>显示数据会比较稀疏，隐式数据会隐含大量信息</p>
+<h3 id="算法"><a href="#算法" class="headerlink" title="算法"></a>算法</h3><p>基于流行度的推荐算法 根据pv uv进行推荐，无个性推荐<br>基于协同过滤的推荐算法<br>基于内容的推荐算法 标签 特征向量<br>基于模型的推荐算法 解决协同过滤的数据稀疏性问题<br>混合算法 多种算法按比重</p>
+<h3 id="领域知识"><a href="#领域知识" class="headerlink" title="领域知识"></a>领域知识</h3><p>根据要应用的领域进行推荐</p>
+<h3 id="ui"><a href="#ui" class="headerlink" title="ui"></a>ui</h3><p>对推荐结果的展示</p>
+<h3 id="分类"><a href="#分类" class="headerlink" title="分类"></a>分类</h3><ul>
+<li>基于关联的推荐算法 购物车</li>
+<li>基于协同过滤的推荐算法</li>
+<li>基于内容的推荐算法</li>
+<li>基于机器学习的推荐算法</li>
+</ul>
+<p><strong>基于关联的推荐算法</strong><br>Apriori关联分析算法<br>FP-Growth关联算法<br>用于购物篮分析：通过放入购物篮的不同商品之间的联系，分析顾客的购物习惯<br>例如：购买鞋子的顾客 10%会购买袜子<br><strong>基于内容的推荐算法</strong><br>推荐内容相似的物品 文本挖掘</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">graph TD</span><br><span class="line"></span><br><span class="line">内容相似 --&gt; D[打标签]</span><br><span class="line">内容相似--&gt; E[文本相似度]</span><br><span class="line">内容相似--&gt; g[分类算法]</span><br><span class="line">E --&gt; F[TF-IDF]</span><br><span class="line">g --&gt; KNN</span><br><span class="line">g --&gt; 决策树,包括随机森林xgboost</span><br><span class="line">g --&gt; 线性分类</span><br><span class="line">g --&gt; 朴素贝叶斯</span><br></pre></td></tr></table></figure>
+<p><strong>基于协同过滤的推荐算法</strong></p>
+<ul>
+<li>于用户 </li>
+<li>基于物品</li>
+<li>基于模型</li>
+</ul>
+<p>协同过滤-&gt;解决数据稀疏问题-&gt;特征分解（降维，评分矩阵补全）-&gt;奇异值分解（SVD）</p>
+<p><strong>混合推荐算法</strong><br>加权的混合： 多种推荐算法按照权重组合起来<br>分层的混合： 多种推荐算法，前一个推荐算法是下一个的输入</p>
+<h2 id="常见问题"><a href="#常见问题" class="headerlink" title="常见问题"></a>常见问题</h2><p>数据的处理和算法的优化</p>
+<h3 id="冷启动-数据处理问题"><a href="#冷启动-数据处理问题" class="headerlink" title="冷启动 数据处理问题"></a>冷启动 数据处理问题</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">graph TD</span><br><span class="line"></span><br><span class="line">冷启动--&gt;D[用户冷启动]</span><br><span class="line">冷启动--&gt;E[物品冷启动]</span><br><span class="line">冷启动 --&gt; F[系统冷启动]</span><br><span class="line">D --&gt; 给新用户做个性化推荐</span><br><span class="line">E --&gt; 把新的物品推荐给特定用户</span><br><span class="line">F --&gt; 新系统让用户感受到个性化推荐</span><br></pre></td></tr></table></figure>
+<p><strong>解决方案</strong></p>
+<ul>
+<li><p>根据用户注册信息对用户进行分类–引导用户把自己的属性表达出来，利用用户社交媒体的信息</p>
+</li>
+<li><p>推荐热门的排行榜</p>
+</li>
+<li><p>基于深度学习的语义理解模型</p>
+</li>
+<li><p>文本分析–自然语言处理</p>
+</li>
+<li><p>主题模型–对物品分类</p>
+</li>
+<li><p>给物品打标签</p>
+<h3 id="数据稀疏问题–针对协同过滤"><a href="#数据稀疏问题–针对协同过滤" class="headerlink" title="数据稀疏问题–针对协同过滤"></a>数据稀疏问题–针对协同过滤</h3><p>用户-物品矩阵是稀疏矩阵</p>
+</li>
+<li><p><em>解决方案*</em></p>
+</li>
+<li><p>降低矩阵维数能降低数据稀疏性–奇异值分解–会丢失有效数据</p>
+</li>
+<li><p>假设用户对其感兴趣物品相似的物品也感兴趣–数据填充–会有偏差</p>
+</li>
+<li><p>基于深度学习的语义理解模型–基于物品本身的信息</p>
+<h3 id="不断变化的用户爱好"><a href="#不断变化的用户爱好" class="headerlink" title="不断变化的用户爱好"></a>不断变化的用户爱好</h3></li>
+<li><p>对用户行为的存储有实时性</p>
+</li>
+<li><p>推荐算法要考虑到用户近期行为和长期行为</p>
+</li>
+<li><p>不断挖掘用户新的兴趣爱好</p>
+</li>
+</ul>
+<h2 id="满足的要求"><a href="#满足的要求" class="headerlink" title="满足的要求"></a>满足的要求</h2><ul>
+<li>推荐的都是用户感兴趣的</li>
+<li>满足所有内容都被推荐给感兴趣的用户</li>
+<li>能预测用户行为</li>
+<li>能够帮助用户发现那些他们可能买但不容易发现的东西</li>
+</ul>
+<h2 id="效果评测"><a href="#效果评测" class="headerlink" title="效果评测"></a>效果评测</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">graph TD</span><br><span class="line"></span><br><span class="line">评测--&gt;D[模型离线实验]</span><br><span class="line">评测--&gt;E[A&#x2F;B test在线实验]</span><br><span class="line">评测--&gt; F[用户调研和反馈]</span><br></pre></td></tr></table></figure>
+<p><strong>离线实验</strong></p>
+<ul>
+<li>将数据集分为训练集和测试集</li>
+<li>在训练集上训练模型，在测试集上预测</li>
+<li>通过预定的指标来评测预测结果<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">import pandas as pd</span><br><span class="line">from sklearn.model_seklection import train_test_spilt</span><br><span class="line">data &#x3D; pa.read_csv(r&quot;&quot;)</span><br><span class="line">df &#x3D; pd.DataFrame(data)</span><br><span class="line">X &#x3D; df.iloc[:,:-1]</span><br><span class="line">Y &#x3D; df[:,-1]</span><br><span class="line"></span><br><span class="line">X_train,X_test,Y_train,Y_test &#x3D;</span><br><span class="line">train_test_spilt(X,Y,test_size&#x3D;0.3,random_state&#x3D;40)</span><br></pre></td></tr></table></figure>
+是推荐系统的基石<br>优点：无需真实用户参与<br>缺点：依赖于用户给定的数据集，无法获取业务关心的指标</li>
+</ul>
+<p><strong>A/B test在线实验</strong><br>用户<br><strong>用户调研</strong><br>预测准确率高不代表用户满意度高<br><strong>评测指标</strong><br>预测准确度： 度量预测用户行为的能力</p>
+<ul>
+<li>评分预测：用户对物品的评分预测 均方根误差（RMSE)和平均绝对误差（MAE）</li>
+<li>TOPN 推荐：准确率和召回率<br>正确率 = 提取出的正确信息条数 / 提取出的信息条数<br>召回率 = 提取出的正确信息条数 / 样本中的信息条数</li>
+<li>覆盖率：描述推荐系统对物品长尾的发掘能力</li>
+<li>多样性：覆盖用户所有的兴趣领域</li>
+<li>新颖性</li>
+<li>惊喜度</li>
+<li>信任度</li>
+<li>实时性</li>
+</ul>
+
       
 
       
@@ -221,24 +293,13 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">algorithm</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">推荐算法</a>
         		</li>
       		
 		</ul>
 	</div>
 
       
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/algorithm//" class="article-tag-list-link color5">algorithm</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
 
       
 
@@ -288,7 +349,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2020/04/11/%E7%BA%BF%E6%AE%B5%E6%A0%91/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2020/07/11/%E6%8E%A8%E8%8D%90%E7%AE%97%E6%B3%95%E6%A6%82%E8%BF%B0/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -302,18 +363,9 @@
   
 <nav id="article-nav">
   
-    <a href="/2020/04/22/%E8%93%9D%E6%A1%A5%E6%9D%AF%E6%A8%A1%E6%8B%9F/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          蓝桥杯模拟
-        
-      </div>
-    </a>
   
-  
-    <a href="/2020/04/06/%E6%9C%80%E7%9F%AD%E8%B7%AF/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">4.4最短路</div>
+    <a href="/2020/07/11/%E7%88%AC%E8%99%AB/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">爬虫</div>
       <i class="icon-circle-right"></i>
     </a>
   

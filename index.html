@@ -154,6 +154,163 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-推荐算法概述" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/07/11/%E6%8E%A8%E8%8D%90%E7%AE%97%E6%B3%95%E6%A6%82%E8%BF%B0/">推荐算法概述</a>
+    </h1>
+  
+
+        
+        <a href="/2020/07/11/%E6%8E%A8%E8%8D%90%E7%AE%97%E6%B3%95%E6%A6%82%E8%BF%B0/" class="archive-article-date">
+  	<time datetime="2020-07-11T07:48:11.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-11</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="推荐算法概述"><a href="#推荐算法概述" class="headerlink" title="推荐算法概述"></a>推荐算法概述</h2><p>数据采集层 数据存储层 离线推荐层 在线推荐层<br>推荐系统：算法 ui 数据 领域知识<br>两个重要部分是数据和算法</p>
+<h3 id="数据"><a href="#数据" class="headerlink" title="数据"></a>数据</h3><ul>
+<li>用户<br>用户信息<br>用户行为<br>用户关系 好友 关注 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">graph TD</span><br><span class="line">用户行为 --&gt; D[显式行为]</span><br><span class="line">用户行为 --&gt; E[隐式行为]</span><br><span class="line">D --&gt;F[购买]</span><br><span class="line">D --&gt;A[收藏]</span><br><span class="line">E --&gt; 停留时间</span><br><span class="line">E --&gt;跳转</span><br><span class="line">E --&gt;点击</span><br><span class="line">D --&gt;B[浏览 关注等]</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">graph TD</span><br><span class="line">用户关系 --&gt; D[显式行为]</span><br><span class="line">用户关系 --&gt; E[隐式行为]</span><br><span class="line">D --&gt;同学</span><br><span class="line">D --&gt;亲人</span><br><span class="line">E --&gt; 关注&#x2F;被关注</span><br><span class="line">E --&gt;加为好友</span><br><span class="line">E --&gt;转发点赞互动</span><br></pre></td></tr></table></figure>
+隐式关系更有用</li>
+<li>物品</li>
+</ul>
+<p><strong>总结</strong><br>数据是基石<br>用户行为可以真实反映每个用户的偏好和习惯<br>显示数据会比较稀疏，隐式数据会隐含大量信息</p>
+<h3 id="算法"><a href="#算法" class="headerlink" title="算法"></a>算法</h3><p>基于流行度的推荐算法 根据pv uv进行推荐，无个性推荐<br>基于协同过滤的推荐算法<br>基于内容的推荐算法 标签 特征向量<br>基于模型的推荐算法 解决协同过滤的数据稀疏性问题<br>混合算法 多种算法按比重</p>
+<h3 id="领域知识"><a href="#领域知识" class="headerlink" title="领域知识"></a>领域知识</h3><p>根据要应用的领域进行推荐</p>
+<h3 id="ui"><a href="#ui" class="headerlink" title="ui"></a>ui</h3><p>对推荐结果的展示</p>
+<h3 id="分类"><a href="#分类" class="headerlink" title="分类"></a>分类</h3><ul>
+<li>基于关联的推荐算法 购物车</li>
+<li>基于协同过滤的推荐算法</li>
+<li>基于内容的推荐算法</li>
+<li>基于机器学习的推荐算法</li>
+</ul>
+<p><strong>基于关联的推荐算法</strong><br>Apriori关联分析算法<br>FP-Growth关联算法<br>用于购物篮分析：通过放入购物篮的不同商品之间的联系，分析顾客的购物习惯<br>例如：购买鞋子的顾客 10%会购买袜子<br><strong>基于内容的推荐算法</strong><br>推荐内容相似的物品 文本挖掘</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">graph TD</span><br><span class="line"></span><br><span class="line">内容相似 --&gt; D[打标签]</span><br><span class="line">内容相似--&gt; E[文本相似度]</span><br><span class="line">内容相似--&gt; g[分类算法]</span><br><span class="line">E --&gt; F[TF-IDF]</span><br><span class="line">g --&gt; KNN</span><br><span class="line">g --&gt; 决策树,包括随机森林xgboost</span><br><span class="line">g --&gt; 线性分类</span><br><span class="line">g --&gt; 朴素贝叶斯</span><br></pre></td></tr></table></figure>
+<p><strong>基于协同过滤的推荐算法</strong></p>
+<ul>
+<li>于用户 </li>
+<li>基于物品</li>
+<li>基于模型</li>
+</ul>
+<p>协同过滤-&gt;解决数据稀疏问题-&gt;特征分解（降维，评分矩阵补全）-&gt;奇异值分解（SVD）</p>
+<p><strong>混合推荐算法</strong><br>加权的混合： 多种推荐算法按照权重组合起来<br>分层的混合： 多种推荐算法，前一个推荐算法是下一个的输入</p>
+<h2 id="常见问题"><a href="#常见问题" class="headerlink" title="常见问题"></a>常见问题</h2><p>数据的处理和算法的优化</p>
+<h3 id="冷启动-数据处理问题"><a href="#冷启动-数据处理问题" class="headerlink" title="冷启动 数据处理问题"></a>冷启动 数据处理问题</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">graph TD</span><br><span class="line"></span><br><span class="line">冷启动--&gt;D[用户冷启动]</span><br><span class="line">冷启动--&gt;E[物品冷启动]</span><br><span class="line">冷启动 --&gt; F[系统冷启动]</span><br><span class="line">D --&gt; 给新用户做个性化推荐</span><br><span class="line">E --&gt; 把新的物品推荐给特定用户</span><br><span class="line">F --&gt; 新系统让用户感受到个性化推荐</span><br></pre></td></tr></table></figure>
+<p><strong>解决方案</strong></p>
+<ul>
+<li><p>根据用户注册信息对用户进行分类–引导用户把自己的属性表达出来，利用用户社交媒体的信息</p>
+</li>
+<li><p>推荐热门的排行榜</p>
+</li>
+<li><p>基于深度学习的语义理解模型</p>
+</li>
+<li><p>文本分析–自然语言处理</p>
+</li>
+<li><p>主题模型–对物品分类</p>
+</li>
+<li><p>给物品打标签</p>
+<h3 id="数据稀疏问题–针对协同过滤"><a href="#数据稀疏问题–针对协同过滤" class="headerlink" title="数据稀疏问题–针对协同过滤"></a>数据稀疏问题–针对协同过滤</h3><p>用户-物品矩阵是稀疏矩阵</p>
+</li>
+<li><p><em>解决方案*</em></p>
+</li>
+<li><p>降低矩阵维数能降低数据稀疏性–奇异值分解–会丢失有效数据</p>
+</li>
+<li><p>假设用户对其感兴趣物品相似的物品也感兴趣–数据填充–会有偏差</p>
+</li>
+<li><p>基于深度学习的语义理解模型–基于物品本身的信息</p>
+<h3 id="不断变化的用户爱好"><a href="#不断变化的用户爱好" class="headerlink" title="不断变化的用户爱好"></a>不断变化的用户爱好</h3></li>
+<li><p>对用户行为的存储有实时性</p>
+</li>
+<li><p>推荐算法要考虑到用户近期行为和长期行为</p>
+</li>
+<li><p>不断挖掘用户新的兴趣爱好</p>
+</li>
+</ul>
+<h2 id="满足的要求"><a href="#满足的要求" class="headerlink" title="满足的要求"></a>满足的要求</h2><ul>
+<li>推荐的都是用户感兴趣的</li>
+<li>满足所有内容都被推荐给感兴趣的用户</li>
+<li>能预测用户行为</li>
+<li>能够帮助用户发现那些他们可能买但不容易发现的东西</li>
+</ul>
+<h2 id="效果评测"><a href="#效果评测" class="headerlink" title="效果评测"></a>效果评测</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">graph TD</span><br><span class="line"></span><br><span class="line">评测--&gt;D[模型离线实验]</span><br><span class="line">评测--&gt;E[A&#x2F;B test在线实验]</span><br><span class="line">评测--&gt; F[用户调研和反馈]</span><br></pre></td></tr></table></figure>
+<p><strong>离线实验</strong></p>
+<ul>
+<li>将数据集分为训练集和测试集</li>
+<li>在训练集上训练模型，在测试集上预测</li>
+<li>通过预定的指标来评测预测结果<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">import pandas as pd</span><br><span class="line">from sklearn.model_seklection import train_test_spilt</span><br><span class="line">data &#x3D; pa.read_csv(r&quot;&quot;)</span><br><span class="line">df &#x3D; pd.DataFrame(data)</span><br><span class="line">X &#x3D; df.iloc[:,:-1]</span><br><span class="line">Y &#x3D; df[:,-1]</span><br><span class="line"></span><br><span class="line">X_train,X_test,Y_train,Y_test &#x3D;</span><br><span class="line">train_test_spilt(X,Y,test_size&#x3D;0.3,random_state&#x3D;40)</span><br></pre></td></tr></table></figure>
+是推荐系统的基石<br>优点：无需真实用户参与<br>缺点：依赖于用户给定的数据集，无法获取业务关心的指标</li>
+</ul>
+<p><strong>A/B test在线实验</strong><br>用户<br><strong>用户调研</strong><br>预测准确率高不代表用户满意度高<br><strong>评测指标</strong><br>预测准确度： 度量预测用户行为的能力</p>
+<ul>
+<li>评分预测：用户对物品的评分预测 均方根误差（RMSE)和平均绝对误差（MAE）</li>
+<li>TOPN 推荐：准确率和召回率<br>正确率 = 提取出的正确信息条数 / 提取出的信息条数<br>召回率 = 提取出的正确信息条数 / 样本中的信息条数</li>
+<li>覆盖率：描述推荐系统对物品长尾的发掘能力</li>
+<li>多样性：覆盖用户所有的兴趣领域</li>
+<li>新颖性</li>
+<li>惊喜度</li>
+<li>信任度</li>
+<li>实时性</li>
+</ul>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">推荐算法</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/07/11/%E6%8E%A8%E8%8D%90%E7%AE%97%E6%B3%95%E6%A6%82%E8%BF%B0/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-爬虫" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -1012,103 +1169,6 @@
 
 
   
-    <article id="post-匈牙利算法" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/04/06/%E5%8C%88%E7%89%99%E5%88%A9%E7%AE%97%E6%B3%95/">4.5 匈牙利算法</a>
-    </h1>
-  
-
-        
-        <a href="/2020/04/06/%E5%8C%88%E7%89%99%E5%88%A9%E7%AE%97%E6%B3%95/" class="archive-article-date">
-  	<time datetime="2020-04-06T02:07:56.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-06</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="匈牙利算法"><a href="#匈牙利算法" class="headerlink" title="匈牙利算法"></a>匈牙利算法</h1><p>参考链接<img src="en-resource://database/579:0" alt="50df830f063d6505a8c77be84feab22f.png"></p>
-<h2 id="二分图"><a href="#二分图" class="headerlink" title="二分图"></a>二分图</h2><p>二分图又称作二部图，是图论中的一种特殊模型。　　<br>设G=(V, E)是一个无向图。如果顶点集V可分割为两个互不相交的子集X和Y，并且图中每条边连接的两个顶点一个在X中，另一个在Y中，则称图G为二分图<br><img src="%E5%8C%88%E7%89%99%E5%88%A9%E7%AE%97%E6%B3%95/%E5%9B%BE2.png" alt="你想输入的替代文字"></p>
-<h3 id="二分图的判定"><a href="#二分图的判定" class="headerlink" title="二分图的判定"></a>二分图的判定</h3><p>如果一个图是连通的，可以用如下的方法判定是否是二分图：　　<br>在图中任选一顶点v，定义其距离标号为0，然后把它的邻接点的距离标号均设为1，接着把所有标号为1的邻接点均标号为2（如果该点未标号的话），如图所示，以此类推。　　标号过程可以用一次BFS实现。标号后，所有标号为奇数的点归为X部，标号为偶数的点归为Y部。　　接下来，二分图的判定就是依次检查每条边，看两个端点是否是一个在X部，一个在Y部。　　如果一个图不连通，则在每个连通块中作判定。<br><img src="%E5%8C%88%E7%89%99%E5%88%A9%E7%AE%97%E6%B3%95/%E5%9B%BE1.png" alt="你想输入的替代文字"></p>
-<h3 id="二分图匹配"><a href="#二分图匹配" class="headerlink" title="二分图匹配"></a>二分图匹配</h3><p>给定一个二分图G，在G的一个子图M中，M的边集{E}中的任意两条边都不依附于同一个顶点，则称M是一个匹配。　　图中加粗的边是数量为2的匹配。</p>
-<h4 id="最大匹配"><a href="#最大匹配" class="headerlink" title="最大匹配"></a>最大匹配</h4><p>选择边数最大的子图称为图的最大匹配问题(maximal matching problem)　　如果一个匹配中，图中的每个顶点都和图中某条边相关联，则称此匹配为完全匹配，也称作完备匹配。　　图中所示为一个最大匹配，但不是完全匹配。</p>
-<h4 id="增广路径"><a href="#增广路径" class="headerlink" title="增广路径"></a>增广路径</h4><p>增广路径的定义：设M为二分图G已匹配边的集合，若P是图G中一条连通两个未匹配顶点的路径（P的起点在X部，终点在Y部，反之亦可），并且属M的边和不属M的边(即已匹配和待匹配的边)在P上交替出现，则称P为相对于M的一条增广路径。　　增广路径是一条“交错轨”。也就是说, 它的第一条边是目前还没有参与匹配的,第二条边参与了匹配,第三条边没有..最后一条边没有参与匹配,并且起点和终点还没有被选择过，这样交错进行,显然P有奇数条边。</p>
-<h4 id="寻找增广路径"><a href="#寻找增广路径" class="headerlink" title="寻找增广路径"></a>寻找增广路径</h4><p>在找到一条增广路径之后对相应的路进行反色，就会找出一条比上一个匹配中路径数多一的一个匹配。所以，当找不到增广路径时，匹配为最大匹配。</p>
-<h4 id="算法轮廓"><a href="#算法轮廓" class="headerlink" title="算法轮廓"></a>算法轮廓</h4><p>1.置M为空<br>2.找出一条增广路径P，通过取反操作获得更大的匹配M’<br>3.代替M重复2操作直到找不出增广路径为止</p>
-<h4 id="匈牙利算法-1"><a href="#匈牙利算法-1" class="headerlink" title="匈牙利算法"></a>匈牙利算法</h4><p>我们采用DFS的办法找一条增广路径：<br>从X部一个未匹配的顶点u开始，找一个未访问的邻接点v（v一定是Y部顶点）。对于v，分两种情况：<br>如果v未匹配，则已经找到一条增广路<br>如果v已经匹配，则取出v的匹配顶点w(w一定是X部顶点)，边(w,v)目前是匹配的，根据“取反”的想法，要将(w,v)改为未匹配，(u,v)设为匹配，能实现这一点的条件是看从w为起点能否新找到一条增广路径P’。如果行，则u-v-P’就是一条以u为起点的增广路径。</p>
-<p>显然是dfs</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">int dfs (int u)&#123;</span><br><span class="line">    for (int v&#x3D;1;v&lt;&#x3D;m;v++)&#123;</span><br><span class="line">        if(t[u)[v]&amp;&amp;!vis[v])&#123;</span><br><span class="line">            vis[v]&#x3D;1;</span><br><span class="line">            if(cy[v]&#x3D;&#x3D;-1||dfs(cy[v])&#123;</span><br><span class="line">                cx[u]&#x3D;v;</span><br><span class="line">                cy[v]&#x3D;u;</span><br><span class="line">                return 1;</span><br><span class="line">               &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">     &#125;</span><br><span class="line">     return 0;</span><br><span class="line">&#125;</span><br><span class="line">&#x2F;&#x2F;主算法</span><br><span class="line">void maxmatch()&#123;</span><br><span class="line">    int ans&#x3D;0;</span><br><span class="line">    memset(cx,-1,sizeof(cx));</span><br><span class="line">    memset(cy,-1,sizeof(cy));</span><br><span class="line">    for(int i&#x3D;0;i&lt;&#x3D;nx;i++)&#123;</span><br><span class="line">        if(cx[i]&#x3D;&#x3D;-1)&#123;</span><br><span class="line">            memset(visit,false,sizeof(visit));</span><br><span class="line">            ans+&#x3D;dfs(i);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h4 id="算法分析"><a href="#算法分析" class="headerlink" title="算法分析"></a>算法分析</h4><p>可以知道二分图的匹配最多有n条边<br>对于每一个n都要进行dfs寻找增广路径<br>对于u的每一个v，v如果未匹配就直接匹配就好了<br>要是匹配了就以v已经匹配的那个u为起点寻找增广路径</p>
-<p>在dfs时，要标记访问过的顶点（visit[j]=true），以防死循环和重复计算；每次在主过程中开始一次dfs前，所有的顶点都是未标记的。主过程只需对每个X部的顶点调用dfs，如果返回一次true，就对最大匹配数加一；一个简单的循环就求出了最大匹配的数目。</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">algorithm</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/algorithm//" class="article-tag-list-link color5">algorithm</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/04/06/%E5%8C%88%E7%89%99%E5%88%A9%E7%AE%97%E6%B3%95/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next &amp;raquo;</a>
@@ -1207,6 +1267,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">python</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">推荐算法</a>
               </li>
             
             <div class="clearfix"></div>
