@@ -154,6 +154,98 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-推荐算法一些概念" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/07/12/%E6%8E%A8%E8%8D%90%E7%AE%97%E6%B3%95%E4%B8%80%E4%BA%9B%E6%A6%82%E5%BF%B5/">推荐算法一些概念</a>
+    </h1>
+  
+
+        
+        <a href="/2020/07/12/%E6%8E%A8%E8%8D%90%E7%AE%97%E6%B3%95%E4%B8%80%E4%BA%9B%E6%A6%82%E5%BF%B5/" class="archive-article-date">
+  	<time datetime="2020-07-12T01:07:30.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-12</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="协同过滤数学知识"><a href="#协同过滤数学知识" class="headerlink" title="协同过滤数学知识"></a>协同过滤数学知识</h2><h4 id="最小二乘法–求解最小参数"><a href="#最小二乘法–求解最小参数" class="headerlink" title="最小二乘法–求解最小参数"></a>最小二乘法–求解最小参数</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">iimport numpy as np</span><br><span class="line">import matplotlib.pyplot as plt</span><br><span class="line">from scipy.optimize import leastsq #最小二乘法的包</span><br><span class="line">data &#x3D; np.loadtxt(r&quot;&quot; ,dtype &#x3D;float , usercols&#x3D;(0,1),skiprows&#x3D;1,encoding&#x3D;&quot;utf8&quot;)</span><br><span class="line"></span><br><span class="line">x&#x3D;data[:,0]</span><br><span class="line">y&#x3D;data[:.-1]</span><br><span class="line"></span><br><span class="line"># plt.scatter(x,y,color&#x3D;&quot;red&quot;)</span><br><span class="line"># plt.show()</span><br><span class="line"></span><br><span class="line">def func(x,p):</span><br><span class="line">    a,b &#x3D; p</span><br><span class="line">    y &#x3D; a*x+b</span><br><span class="line">    return y</span><br><span class="line"></span><br><span class="line">def errors(x,y,p):</span><br><span class="line">    y_&#x3D;func(x,p)</span><br><span class="line">    return y - y_</span><br><span class="line"></span><br><span class="line">res &#x3D; leastsq(errors,[2,3],args&#x3D;[x,y])</span><br><span class="line">_a,_b&#x3D;res[0]</span><br><span class="line"></span><br><span class="line">plt.scatter(x,y,color&#x3D;&quot;red&quot;)</span><br><span class="line">plt.plot(x,func([_a,_b],x),color&#x3D;&quot;blue&quot;)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+<p>最大似然估计也是对参数预估</p>
+<h4 id="梯度下降法"><a href="#梯度下降法" class="headerlink" title="梯度下降法"></a>梯度下降法</h4><p>从初始点开始，沿着下降最陡峭的方向走，不断地更新<br>参数：出发点，方向，步长（关键）<br>在无法下降时不在下降<br>分类</p>
+<ul>
+<li>批量梯度下降</li>
+<li>随机梯度下降–速度快</li>
+<li>小批量梯度下降</li>
+</ul>
+<p>注意：</p>
+<ul>
+<li>对初始点选择敏感</li>
+<li>梯度时在某点方向导数的最大值</li>
+<li>多元函数求偏导<br>方向导数：是函数在其他特定方向（非坐标轴方向）的变化率<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br></pre></td><td class="code"><pre><span class="line">import numpy as np</span><br><span class="line">import matplotlib.pyplot as plt</span><br><span class="line"></span><br><span class="line">data &#x3D; np.loadtxt(r&quot;&quot; ,dtype &#x3D;float , usercols&#x3D;(0,1),skiprows&#x3D;1,encoding&#x3D;&quot;utf8&quot;)#忽略第一行数据，只取第一列第二列数据</span><br><span class="line">x &#x3D; data[:,0]</span><br><span class="line">y &#x3D; data[;,1]</span><br><span class="line"></span><br><span class="line">def func(p,x):</span><br><span class="line">    k,b&#x3D;p</span><br><span class="line">    y &#x3D; k*x+b</span><br><span class="line">    return y</span><br><span class="line"></span><br><span class="line">def cost():</span><br><span class="line">    total_cost&#x3D;0</span><br><span class="line">    data_num &#x3D; len(data)</span><br><span class="line">    for i in range(data_num):</span><br><span class="line">        y_real &#x3D; y[i]</span><br><span class="line">        x &#x3D;x[i]</span><br><span class="line">        _y&#x3D;func(p,x)</span><br><span class="line">        total_cost+&#x3D;(_y-y_real)**2</span><br><span class="line">    return total_cost&#x2F;data_num</span><br><span class="line"></span><br><span class="line">inital_p&#x3D;[0,0]</span><br><span class="line">learning_rate&#x3D;0.001</span><br><span class="line">max_item &#x3D; 30</span><br><span class="line"></span><br><span class="line">def grad(inital_p,learning_rate,max_item):</span><br><span class="line">    k,b&#x3D;inital_p</span><br><span class="line">    cost_list&#x3D;[]</span><br><span class="line">    for i in range(max_item):</span><br><span class="line">        k,b &#x3D; step_grap(k,b,learning_rate,x,y)</span><br><span class="line">        _cost &#x3D; cost([k.b])</span><br><span class="line">        cost_list.append(_cost)</span><br><span class="line">    return [k,b,cost_list]</span><br><span class="line"></span><br><span class="line">def step_grap(current_key,current_b,learning_rate,x,y):</span><br><span class="line">    sum_grap_k&#x3D;0</span><br><span class="line">    sum_grap_b&#x3D;0</span><br><span class="line">    data_num&#x3D;len(data)</span><br><span class="line">    </span><br><span class="line">    for i in range(data_num):</span><br><span class="line">        _y_real&#x3D;y[i]</span><br><span class="line">        _x&#x3D;x[i]</span><br><span class="line">        _y&#x3D;func([current_k,current_b],_x)</span><br><span class="line">        sum_grad_k+&#x3D;(_y-_y_real)*_x</span><br><span class="line">        sum_grad_k+&#x3D;(_y-_y_real)</span><br><span class="line">        </span><br><span class="line">    grad_k &#x3D; 2&#x2F;data_num*sum_grad_k</span><br><span class="line">    grad_b &#x3D; 2&#x2F;data_num*sum_grad_b</span><br><span class="line">    </span><br><span class="line">    update_k&#x3D;current_k-learning_rate*grab_k</span><br><span class="line">    update_b&#x3D;current_k-learning_rate*grab_b</span><br><span class="line">    </span><br><span class="line">    return update_k,update_b</span><br><span class="line"></span><br><span class="line">k,b,cost_list&#x3D;grad(inital_p,learning_rate,max_item)</span><br><span class="line"></span><br><span class="line">plt.scatter(x,y,color&#x3D;&quot;red&quot;)</span><br><span class="line">plt.plot(x,func([k,b],x),color&#x3D;&quot;blue&quot;)</span><br><span class="line">plt.plot(cost_list)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+<h4 id="余弦相似度"><a href="#余弦相似度" class="headerlink" title="余弦相似度"></a>余弦相似度</h4>余弦值约接近1，越相似<br>用于：<br>用户，物品，文本相似度比较<h4 id="皮尔逊相关系数"><a href="#皮尔逊相关系数" class="headerlink" title="皮尔逊相关系数"></a>皮尔逊相关系数</h4>皮尔逊相关系数是余弦相似度在维度缺失情况下的一种改进<br>每个向量的每个维度都减去一个平均值，称为中心化<br>是在计算余弦值之前对每个向量进行中心化</li>
+</ul>
+<h4 id="欧式距离"><a href="#欧式距离" class="headerlink" title="欧式距离"></a>欧式距离</h4><p>两点距离<br>体现个体数值特征的绝对差异–用户行为指标相似度<br>余弦相似度是从方向上区分差异，对绝对值特征不敏感–用户兴趣相似度</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">#欧氏距离</span><br><span class="line">import numpy as np</span><br><span class="line">from scipy,spatial.distance import pdlist</span><br><span class="line">x&#x3D;np.array([13,56])</span><br><span class="line">y&#x3D;np.array([26,89])</span><br><span class="line"></span><br><span class="line">_x&#x3D;np.mat(x)</span><br><span class="line">_y&#x3D;np.mat(y)</span><br><span class="line"></span><br><span class="line">dist_np&#x3D;np.sqrt(np.sum(np.square(_x-_y</span><br><span class="line">                                 </span><br><span class="line">#用spicy实现</span><br><span class="line">z&#x3D;np.vstack(x,y)</span><br><span class="line">dist_spicy&#x3D;pdlist(z)</span><br><span class="line">                                 </span><br><span class="line">#余弦相似度</span><br><span class="line">                                 </span><br><span class="line">A&#x3D;np.mat(np.array([13.26]))</span><br><span class="line">B&#x3D;np.array([26,89])</span><br><span class="line">i&#x3D;float(A*B.T)#等于AB乘积加和</span><br><span class="line">n&#x3D;np.linalg.norm(A)*np.linalg.norm(A)</span><br><span class="line">sim&#x3D;i&#x2F;n</span><br><span class="line">#skit_learn</span><br><span class="line">from sklearn.metrics.pairwise import cosine_similarity      </span><br><span class="line">                                 </span><br><span class="line">z&#x3D;np.array([26,89],[13.26])</span><br><span class="line">sim&#x3D;cosine_similarity (z)#返回是二维数组，[i][j]表示z中i,j的余弦相似度</span><br></pre></td></tr></table></figure>
+
+
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">推荐算法</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/07/12/%E6%8E%A8%E8%8D%90%E7%AE%97%E6%B3%95%E4%B8%80%E4%BA%9B%E6%A6%82%E5%BF%B5/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-推荐算法概述" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -1034,112 +1126,6 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2020/04/11/%E7%BA%BF%E6%AE%B5%E6%A0%91/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-最短路" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/04/06/%E6%9C%80%E7%9F%AD%E8%B7%AF/">4.4最短路</a>
-    </h1>
-  
-
-        
-        <a href="/2020/04/06/%E6%9C%80%E7%9F%AD%E8%B7%AF/" class="archive-article-date">
-  	<time datetime="2020-04-06T04:51:26.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-06</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="4-4最短路"><a href="#4-4最短路" class="headerlink" title="4-4最短路"></a>4-4最短路</h1><p>又是一周算法课，本来应该昨天更的，因为昨天有点神经质怀疑人生所以就今天更了。<br>算法组是115里最懒散的一个组，别的组都是学长学姐讲课，学弟学妹听，我们组正好反了过来<br>下面是学妹前天讲的最短路，前两种是我们大一在准备天梯赛的时候讲过的，后两者以前看到过不是很熟<br>最短路是图里很常见的一个问题，目前主要解决的有四个算法，从简到难一个一个来讲</p>
-<h2 id="弗洛依德算法（Floyed）"><a href="#弗洛依德算法（Floyed）" class="headerlink" title="弗洛依德算法（Floyed）"></a>弗洛依德算法（Floyed）</h2><p>基本思想是动态规划<br>其主要思想是遍历每一个节点看齐是否可以作为中转节点使路径更小</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">for(int k&#x3D;0;k&lt;n;k++)&#x2F;&#x2F;k 为中间节点</span><br><span class="line"></span><br><span class="line">       for(int i&#x3D;0;i&lt;n;i++)</span><br><span class="line"></span><br><span class="line">              for(int j&#x3D;0;j&lt;n;j++)</span><br><span class="line"></span><br><span class="line">            if(d[i][j]&lt;INF&amp;&amp;d[k][j]&lt;INF)&#x2F;&#x2F;防止溢出或包括</span><br><span class="line"></span><br><span class="line">                           d[i][j]&#x3D;min(d[i][j],d[i][k]+d[k][j]);</span><br></pre></td></tr></table></figure>
-<p>如果试求是否有路径可通的话直接将转移方程改为</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">d[i][j]&#x3D;d[i][j]||(d[i][k]&amp;&amp;d[k][j]);</span><br></pre></td></tr></table></figure>
-<p>这个算法真的又简单又好懂而且重点是没有限制，任何情况下都可以用</p>
-<p>缺点是 时间复杂度n^3</p>
-<h2 id="迪杰斯特拉-Dijkstra-算法"><a href="#迪杰斯特拉-Dijkstra-算法" class="headerlink" title="迪杰斯特拉(Dijkstra)算法"></a>迪杰斯特拉(Dijkstra)算法</h2><p>适用于边权为正的情况，可计算正权图上的单源最短路，从一个点出发求出这个点到所有点的最短路径<br>主要适用的思想是贪心<br>首先把起点到起点的最短路径设置为0 d[0]=0<br>之后更新与0有路径的点的距离<br>此时0 的vis[0]=1表示已经访问过<br>找出d数组中没有被访问过且最小的那个点<br>再用转移方程进行更新直到所有点被访问过</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">//记忆化搜索初始化</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">memset</span>(v,<span class="number">0</span>,<span class="keyword">sizeof</span>(v));</span><br><span class="line"></span><br><span class="line"><span class="comment">//初始化</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;n;i++)&#123;</span><br><span class="line"></span><br><span class="line">    d[i]=(i==<span class="number">0</span>?<span class="number">0</span>:INF);</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//核心</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;n;i++)&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">int</span> x,m=INF;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> y=<span class="number">0</span>;y&lt;n;y++)&#123;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span>(!v[y]&amp;&amp;d[y]&lt;=m)</span><br><span class="line"></span><br><span class="line">            m=d[x=y];</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    v[x]=<span class="number">1</span>;<span class="comment">//标记已访问</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> y=<span class="number">0</span>;y&lt;n;y++)&#123;</span><br><span class="line"></span><br><span class="line">        d[y]=<span class="built_in">min</span>&#123;d[y],d[x]+w[x][y]&#125;;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line">如果求最短路本身就直接把转移方程改为</span><br><span class="line"><span class="keyword">if</span>(d[y]&gt;d[x]+w[x][y])&#123;</span><br><span class="line"></span><br><span class="line">       d[y]=d[x]+w[x][y];</span><br><span class="line"></span><br><span class="line">       fa[y]=x;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="贝尔曼·福特-Bellman·Ford-算法"><a href="#贝尔曼·福特-Bellman·Ford-算法" class="headerlink" title="贝尔曼·福特(Bellman·Ford)算法"></a>贝尔曼·福特(Bellman·Ford)算法</h2><p>可用于求有负边权的最短路<br>最短路中不含环<br>可知最短路的路径中最多是把每个节点都连了起来，所以最多进行了n-1次松弛操作<br>如果经过n-1次松弛后，d[i]还是+∞，说明s不可到达i</p>
-<p>如果n-1次松弛后，有边（u，v）满足d[v]&gt;d[u]+w[u][v]，说明还能继续松弛，存在负权回路。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">d[0]&#x3D;0;</span><br><span class="line">for(i&#x3D;1;i&lt;n;i++)&#123;</span><br><span class="line">    d[i]&#x3D;INF;</span><br><span class="line">   &#125;</span><br><span class="line"> for(i&#x3D;0;i&lt;&#x3D;n-1;i++)&#123;</span><br><span class="line">    for(j&#x3D;0;j&lt;m;j++)&#123;</span><br><span class="line">        x&#x3D;u[j];y&#x3D;v[j];dis&#x3D;w[j];</span><br><span class="line">        if(d[x]!&#x3D;inf&amp;&amp;dis&lt;inf)&#123;</span><br><span class="line">            d[y]&#x3D;min(d[y],d[x]+dis);</span><br><span class="line">        &#125;</span><br><span class="line">   &#125;</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
-<p>时间复杂度o（nm）</p>
-<h2 id="SFA算法"><a href="#SFA算法" class="headerlink" title="SFA算法"></a>SFA算法</h2><p>这个是上一个算法的简化<br>上一个算法中把每一次都对所有边的节点进行松弛操作<br>这个算法则是选择可以松弛的点进行松弛，不能的就不选择<br>只有在前一遍松弛中改变了最短路估计值的顶点，才有可能引起邻接点最短路估计值发生变化。因此用队列来存放被松弛的顶点，之后只对队列中的点进行处理可以降低算法的时间复杂度<br>这里还有一点是建立邻接表<br>用了两个数组first[i]和next[i]<br>first表示i节点在输入数据时出现的最后一次的第几组数据<br>next表示如果第i个边入队的话，接下来还要入队的边，他们的起点相同<br>这以这样看这个邻接表<br>假设是节点2<br>first[2]–next[first[2]]–next[next[first[2]]]——…….</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">初始化所有节点first为-1</span><br><span class="line">然后next[i]&#x3D;first[u[i]];</span><br><span class="line">first[u[i]]&#x3D;i;</span><br><span class="line">把一号节点入队</span><br><span class="line">q.push(first[1]);</span><br><span class="line">book[1]&#x3D;1;</span><br><span class="line">while(!isEmpty(q))&#123;</span><br><span class="line">    i&#x3D;q.pop();</span><br><span class="line">    k&#x3D;i;</span><br><span class="line">    x&#x3D;u[i];y&#x3D;v[i];dis&#x3D;w[i];</span><br><span class="line">    whle(i!&#x3D;-1)&#123;</span><br><span class="line">        if(d[y]&gt;d[x]+dis)&#123;</span><br><span class="line">             d[y]&#x3D;d[x]+dis;</span><br><span class="line">         &#125;</span><br><span class="line">          if(book[y])</span><br><span class="line">        q.push(y);</span><br><span class="line">        book[y]&#x3D;1;</span><br><span class="line">    &#125;</span><br><span class="line">      i&#x3D;next[i];</span><br><span class="line">    &#125;</span><br><span class="line">   book[k]&#x3D;0;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-<p>下面这个代码标准一点是学妹课件上的</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">//初始化first[i]=-1 顶点暂时都没有边</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//建立邻接表的关键</span></span><br><span class="line"></span><br><span class="line">next[i]=first[u[i]];</span><br><span class="line"></span><br><span class="line">first[u[i]]=i;</span><br><span class="line"></span><br><span class="line"><span class="comment">//1号顶点入队</span></span><br><span class="line"></span><br><span class="line">que[tail]=<span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">tail++;</span><br><span class="line"></span><br><span class="line">book[<span class="number">1</span>]=<span class="number">1</span>;<span class="comment">//标记1号顶点已入队</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">while</span>(head&lt;tail)<span class="comment">//当队列不为空</span></span><br><span class="line"></span><br><span class="line">&#123; </span><br><span class="line"></span><br><span class="line">       k=first[que[head]];</span><br><span class="line"></span><br><span class="line">    <span class="keyword">while</span>(k!=<span class="number">-1</span>)&#123;<span class="comment">//扫描当前顶点的所有边</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span>(d[v[k]]&gt;d[u[k]]+w[k])&#123;</span><br><span class="line"></span><br><span class="line">            d[v[k]]=d[u[k]]+w[k];</span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span>(book[v[k]]==<span class="number">0</span>)&#123;<span class="comment">//不在队列中，入队</span></span><br><span class="line"></span><br><span class="line">                que[tail]=v[k];</span><br><span class="line"></span><br><span class="line">                tail++;</span><br><span class="line"></span><br><span class="line">                book[v[k]]=<span class="number">1</span>;<span class="comment">//标记入队</span></span><br><span class="line"></span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        k=next[k];</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//出队</span></span><br><span class="line"></span><br><span class="line">    book[que[head]]=<span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">    head++;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-
-
-
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">algorithm</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/algorithm//" class="article-tag-list-link color5">algorithm</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/04/06/%E6%9C%80%E7%9F%AD%E8%B7%AF/">展开全文 >></a>
         </p>
       
 
