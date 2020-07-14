@@ -8,15 +8,15 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>缺失值填充 | 张大牙のblog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="train_data&#x3D;pd.DataFrame(data)#固定值填充df[‘rating’]&#x3D;df[‘rating’].fillna(0.0)#平均值填充df[‘rating’]&#x3D;df[‘rating’].fillna(round(df[‘rating’].mean(),1))#中位数填充df[‘rating’].fillna(round(df[‘rating’].median(),1),inp">
+  <meta name="description" content="缺失值填充 固定数填充和平均数&#x2F;中位数&#x2F;众数 123456789101112131415161718df&#x3D;pd.DataFrame(data)#固定值填充df[&#39;rating&#39;]&#x3D;df[&#39;rating&#39;].fillna(0.0)#平均值填充df[&#39;rating&#39;]&#x3D;df[&#39;rating&#39;].fillna(">
 <meta property="og:type" content="article">
 <meta property="og:title" content="缺失值填充">
 <meta property="og:url" content="http://yoursite.com/2020/07/14/%E7%BC%BA%E5%A4%B1%E5%80%BC%E5%A1%AB%E5%85%85/index.html">
 <meta property="og:site_name" content="张大牙のblog">
-<meta property="og:description" content="train_data&#x3D;pd.DataFrame(data)#固定值填充df[‘rating’]&#x3D;df[‘rating’].fillna(0.0)#平均值填充df[‘rating’]&#x3D;df[‘rating’].fillna(round(df[‘rating’].mean(),1))#中位数填充df[‘rating’].fillna(round(df[‘rating’].median(),1),inp">
+<meta property="og:description" content="缺失值填充 固定数填充和平均数&#x2F;中位数&#x2F;众数 123456789101112131415161718df&#x3D;pd.DataFrame(data)#固定值填充df[&#39;rating&#39;]&#x3D;df[&#39;rating&#39;].fillna(0.0)#平均值填充df[&#39;rating&#39;]&#x3D;df[&#39;rating&#39;].fillna(">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2020-07-14T00:57:50.000Z">
-<meta property="article:modified_time" content="2020-07-14T00:58:49.255Z">
+<meta property="article:modified_time" content="2020-07-14T01:05:49.249Z">
 <meta property="article:author" content="张大牙">
 <meta property="article:tag" content="推荐算法">
 <meta name="twitter:card" content="summary">
@@ -175,8 +175,12 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>train_data=pd.DataFrame(data)<br>#固定值填充<br>df[‘rating’]=df[‘rating’].fillna(0.0)<br>#平均值填充<br>df[‘rating’]=df[‘rating’].fillna(round(df[‘rating’].mean(),1))<br>#中位数填充<br>df[‘rating’].fillna(round(df[‘rating’].median(),1),inplace=True)<br>#众数填充<br>mode = df[‘rating’].dropna().mode().values<br>df[‘rating’]=df[‘rating’].fillna(mode)</p>
-<p>#使用skit-learn<br>from sklearn.impute import SimpleImputer<br>import numpy as np<br>X = df.iloc[:,3:4].values<br>imp = SimpleImputer(missing_values=np.nan,strategy=’mean’)#平均值<br>imp.fit(X)<br>df[‘rating’]=np.around(imp.transform(X),decimals=1)#或者fit_trainform</p>
+        <h3 id="缺失值填充"><a href="#缺失值填充" class="headerlink" title="缺失值填充"></a>缺失值填充</h3><p> <strong>固定数填充和平均数/中位数/众数</strong><br> <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">df&#x3D;pd.DataFrame(data)</span><br><span class="line">#固定值填充</span><br><span class="line">df[&#39;rating&#39;]&#x3D;df[&#39;rating&#39;].fillna(0.0)</span><br><span class="line">#平均值填充</span><br><span class="line">df[&#39;rating&#39;]&#x3D;df[&#39;rating&#39;].fillna(round(df[&#39;rating&#39;].mean(),1))</span><br><span class="line">#中位数填充</span><br><span class="line">df[&#39;rating&#39;].fillna(round(df[&#39;rating&#39;].median(),1),inplace&#x3D;True)</span><br><span class="line">#众数填充</span><br><span class="line">mode &#x3D; df[&#39;rating&#39;].dropna().mode().values</span><br><span class="line">df[&#39;rating&#39;]&#x3D;df[&#39;rating&#39;].fillna(mode)</span><br><span class="line"></span><br><span class="line">#使用skit-learn</span><br><span class="line">from sklearn.impute import SimpleImputer</span><br><span class="line">import numpy as np</span><br><span class="line">X &#x3D; df.iloc[:,3:4].values</span><br><span class="line">imp &#x3D; SimpleImputer(missing_values&#x3D;np.nan,strategy&#x3D;&#39;mean&#39;)#平均值</span><br><span class="line">imp.fit(X)</span><br><span class="line">df[&#39;rating&#39;]&#x3D;np.around(imp.transform(X),decimals&#x3D;1)#或者fit_trainform</span><br></pre></td></tr></table></figure><br> <strong>其他方法</strong></p>
+<ul>
+<li>插值法–建立插值函数–不同于拟合函数，要穿过样本点</li>
+<li>使用滑动平均窗口法 – 定义窗口数，计算上下窗口数平均值进行填充</li>
+<li>使用模型预测比如KNN，随机森林等等</li>
+</ul>
 
       
 
