@@ -154,6 +154,162 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-基于用户的协同过滤" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/07/14/%E5%9F%BA%E4%BA%8E%E7%94%A8%E6%88%B7%E7%9A%84%E5%8D%8F%E5%90%8C%E8%BF%87%E6%BB%A4/">基于用户的协同过滤</a>
+    </h1>
+  
+
+        
+        <a href="/2020/07/14/%E5%9F%BA%E4%BA%8E%E7%94%A8%E6%88%B7%E7%9A%84%E5%8D%8F%E5%90%8C%E8%BF%87%E6%BB%A4/" class="archive-article-date">
+  	<time datetime="2020-07-14T00:58:13.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-14</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="基于用户的协同过滤–user-based"><a href="#基于用户的协同过滤–user-based" class="headerlink" title="基于用户的协同过滤–user-based"></a>基于用户的协同过滤–user-based</h4><p>对用户进行聚类，推荐和你相似的用户喜欢的商品</p>
+<h5 id="计算用户相似度"><a href="#计算用户相似度" class="headerlink" title="计算用户相似度"></a>计算用户相似度</h5><p>1.生成用户-物品评价矩阵（打分，是否购买，停留时间）<br>2.计算目标用户和所有用户相似度，找出K个相似集<br>3.进行推荐<br><strong>计算余弦相似度</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">def calcos(list1,list2):</span><br><span class="line">    res&#x3D;0</span><br><span class="line">    d1&#x3D;0</span><br><span class="line">    d2&#x3D;0</span><br><span class="line">    for (i,j) in zip(list1,list2):</span><br><span class="line">        res+&#x3D;i*j;</span><br><span class="line">        d1+&#x3D;i**2</span><br><span class="line">        d2+&#x3D;j**2</span><br><span class="line">    return res&#x2F;math.sqrt(d1+d2)</span><br></pre></td></tr></table></figure>
+
+<p><strong>sorted 函数</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sorted(iterable, key&#x3D;None, reverse&#x3D;False)</span><br></pre></td></tr></table></figure>
+
+<p><strong>enumerate() 函数</strong><br>enumerate() 函数用于将一个可遍历的数据对象(如列表、元组或字符串)组合为一个索引序列，同时列出数据和数据下标</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt;seq &#x3D; [&#39;one&#39;, &#39;two&#39;, &#39;three&#39;] </span><br><span class="line">&gt;&gt;&gt; for i, element in enumerate(seq):</span><br><span class="line">... print i, element</span><br><span class="line">... </span><br><span class="line">0 one </span><br><span class="line">1 two</span><br><span class="line">2 three</span><br></pre></td></tr></table></figure>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">推荐算法</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/07/14/%E5%9F%BA%E4%BA%8E%E7%94%A8%E6%88%B7%E7%9A%84%E5%8D%8F%E5%90%8C%E8%BF%87%E6%BB%A4/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-缺失值填充" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/07/14/%E7%BC%BA%E5%A4%B1%E5%80%BC%E5%A1%AB%E5%85%85/">缺失值填充</a>
+    </h1>
+  
+
+        
+        <a href="/2020/07/14/%E7%BC%BA%E5%A4%B1%E5%80%BC%E5%A1%AB%E5%85%85/" class="archive-article-date">
+  	<time datetime="2020-07-14T00:57:50.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-14</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>train_data=pd.DataFrame(data)<br>#固定值填充<br>df[‘rating’]=df[‘rating’].fillna(0.0)<br>#平均值填充<br>df[‘rating’]=df[‘rating’].fillna(round(df[‘rating’].mean(),1))<br>#中位数填充<br>df[‘rating’].fillna(round(df[‘rating’].median(),1),inplace=True)<br>#众数填充<br>mode = df[‘rating’].dropna().mode().values<br>df[‘rating’]=df[‘rating’].fillna(mode)</p>
+<p>#使用skit-learn<br>from sklearn.impute import SimpleImputer<br>import numpy as np<br>X = df.iloc[:,3:4].values<br>imp = SimpleImputer(missing_values=np.nan,strategy=’mean’)#平均值<br>imp.fit(X)<br>df[‘rating’]=np.around(imp.transform(X),decimals=1)#或者fit_trainform</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">推荐算法</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/07/14/%E7%BC%BA%E5%A4%B1%E5%80%BC%E5%A1%AB%E5%85%85/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-推荐算法一些概念" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -941,191 +1097,6 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2020/04/22/%E5%BF%AB%E9%80%9F%E5%B9%82/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-蓝桥杯模拟" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/04/22/%E8%93%9D%E6%A1%A5%E6%9D%AF%E6%A8%A1%E6%8B%9F/">蓝桥杯模拟</a>
-    </h1>
-  
-
-        
-        <a href="/2020/04/22/%E8%93%9D%E6%A1%A5%E6%9D%AF%E6%A8%A1%E6%8B%9F/" class="archive-article-date">
-  	<time datetime="2020-04-22T11:05:01.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-22</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="蓝桥杯模拟"><a href="#蓝桥杯模拟" class="headerlink" title="蓝桥杯模拟"></a>蓝桥杯模拟</h1><p>我发现我每次想起来写博客都是因为我不想写作业，不想看网课，不想复习，玩又太罪恶，就一边看剧听歌写博客来麻痹自己<br>上周又一次蓝桥杯模拟<br>我又因为中午睡大觉给起晚了<br>但是一看这题<br>我的天<br>我感觉除了最后一道题都可以当模板题了<br>有点应试考试的感觉<br>我觉得算法比赛不该这个样子吧<br>不喜欢<br>所以就写一下最后一道题算了<br>最后一道题其实也可以做模板题。。。。。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">问题描述</span><br><span class="line">小明和朋友们一起去郊外植树，他们带了一些在自己实验室精心研究出的小树苗。</span><br><span class="line">小明和朋友们一共有n个人，他们经过精心挑选，在一块空地上每个人挑选了一个适合植树的位置，总共n个。他们准备把自己带的树苗都植下去。</span><br><span class="line">然而，他们遇到了一个困难：有的树苗比较大，而有的位置挨太近，导致两棵树植下去后会撞在一起。</span><br><span class="line">他们将树看成一个圆，圆心在他们找的位置上。如果两棵树对应的圆相交，这两棵树就不适合同时植下(相切不受影响) ，称为两棵树冲突。</span><br><span class="line">小明和朋友们决定先合计合计，只将其中的一部分树植下去，保证没有互相冲突的树。他们同时希望这些树所能覆盖的面积和(圆面积和)最大。</span><br><span class="line">输入格式</span><br><span class="line">输入的第一行包含一个整数n ，表示人数，即准备植树的位置数。</span><br><span class="line">接下来n行，每行三个整数x,y,r,表示一棵树在空地上的横、纵坐标和半径。</span><br><span class="line">输出格式</span><br><span class="line">输出一行包含一个整数,表示在不冲突下可以植树的面积和。于每棵树的面积都是圆周率的整数倍，请输出答案除以圆周率后的值(应当是一个整数)。</span><br><span class="line">样例输入</span><br><span class="line">6</span><br><span class="line">1 1 2</span><br><span class="line">1 4 2</span><br><span class="line">1 7 2</span><br><span class="line">4 1 2</span><br><span class="line">4 4 2</span><br><span class="line">4 7 2</span><br><span class="line">样例输出</span><br><span class="line">12</span><br><span class="line">评测用例规模与约定</span><br><span class="line">对于30%的评测用例，1&lt;&#x3D;n&lt;&#x3D;10;</span><br><span class="line">对于60%的评测用例，1&lt;&#x3D;n&lt;&#x3D;20;</span><br><span class="line">对于所有评测用例，1&lt;&#x3D;n&lt;&#x3D;30，0&lt;&#x3D;x,y&lt;&#x3D;1000,</span><br><span class="line">1 &lt;&#x3D; r &lt;&#x3D;1000。</span><br></pre></td></tr></table></figure>
-<p>DFS<br>用DFS穷举找到最短路径，其实这样复杂度挺高的，但是对于这个比赛可以应付一下</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;iostream&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">int vis[1005];</span><br><span class="line">int sum,ans&#x3D;0;</span><br><span class="line">int x[1005],y[1005],r[1005];</span><br><span class="line">int n,m,i,j,k;</span><br><span class="line"></span><br><span class="line">bool cal(int i)&#123;</span><br><span class="line">	for(j&#x3D;0;j&lt;n;j++)&#123;</span><br><span class="line">		if(vis[j]&amp;&amp;i!&#x3D;j)&#123;</span><br><span class="line">			int dis &#x3D; (x[i] - x[j]) * (x[i] - x[j]) + (y[i] - y[j]) * (y[i] - y[j]);</span><br><span class="line">			if(dis &lt; (r[i] + r[j]) * (r[i] + r[j])) return false;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	return true;</span><br><span class="line">&#125;</span><br><span class="line">void dfs(int step,int sum)&#123;</span><br><span class="line">	if(step&#x3D;&#x3D;n)&#123;</span><br><span class="line">		ans&#x3D;ans&gt;sum?ans:sum;</span><br><span class="line">		return ;</span><br><span class="line">	&#125;</span><br><span class="line">	int p&#x3D;0;</span><br><span class="line">	for(i&#x3D;0;i&lt;n;i++)&#123;</span><br><span class="line">		if(!vis[i])&#123;</span><br><span class="line">			p&#x3D;r[i];</span><br><span class="line">		vis[i]&#x3D;1;</span><br><span class="line">		if(!cal(i))r[i]&#x3D;0;</span><br><span class="line">		dfs(step+1,sum+r[i]*r[i]);</span><br><span class="line">		vis[i]&#x3D;0;</span><br><span class="line">		r[i]&#x3D;p;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line">int main()&#123;</span><br><span class="line">	cin&gt;&gt;n;</span><br><span class="line">	for(i&#x3D;0;i&lt;n;i++)&#123;</span><br><span class="line">		cin&gt;&gt;x[i]&gt;&gt;y[i]&gt;&gt;r[i];</span><br><span class="line">	&#125;</span><br><span class="line">	dfs(0,0);</span><br><span class="line">	cout&lt;&lt;ans;</span><br><span class="line">	return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>比赛总结到此<br>不想写了<br>嘿嘿</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">competition</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/competition//" class="article-tag-list-link color2">competition</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/04/22/%E8%93%9D%E6%A1%A5%E6%9D%AF%E6%A8%A1%E6%8B%9F/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-线段树" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/04/11/%E7%BA%BF%E6%AE%B5%E6%A0%91/">线段树</a>
-    </h1>
-  
-
-        
-        <a href="/2020/04/11/%E7%BA%BF%E6%AE%B5%E6%A0%91/" class="archive-article-date">
-  	<time datetime="2020-04-11T14:12:17.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-11</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="线段树"><a href="#线段树" class="headerlink" title="线段树"></a>线段树</h1><p>线段树是算法竞赛中常用的用来维护 区间信息 的数据结构。<br>线段树可以在 logn 的时间复杂度内实现单点修改、区间修改、区间查询（区间求和，求区间最大值，求区间最小值）等操作。</p>
-<h2 id="线段树和树状数组的区别"><a href="#线段树和树状数组的区别" class="headerlink" title="线段树和树状数组的区别"></a>线段树和树状数组的区别</h2><p>树状数组能有的操作，线段树一定有；线段树有的操作，树状数组不一定有。<br>但树状数组的代码更短，思维也更清晰。</p>
-<h2 id="线段树-1"><a href="#线段树-1" class="headerlink" title="线段树"></a>线段树</h2><p>线段树是一个完全二s叉树</p>
-<p>线段树将每个长度不为  n的区间划分成左右两个区间递归求解，把整个线段划分为一个树形结构，通过合并左右两区间信息来求得该区间的信息。这种数据结构可以方便的进行大部分的区间操作。</p>
-<p>每个节点都为自己子节点的和</p>
-<p> d[i]的左儿子节点就是 d[2i] ，d[i]  的右儿子节点就是 d[2i+1] 。如果 d[i] 表示的是区间 [s,t] 的话，那么 d[i] 的左儿子节点表示的是区间 [s,s+t/2] ，右儿子表示的是区间  [s+t/2+1,t] 。</p>
-<p> 父节点不仅可以表示子节点的和还可以表示子节点的最大值最小值等，只要是区间特征就行。</p>
-<h4 id="基本数据结构"><a href="#基本数据结构" class="headerlink" title="基本数据结构"></a>基本数据结构</h4> <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">struct point&#123;</span><br><span class="line">	int l,r,data;</span><br><span class="line">&#125;;</span><br><span class="line">&#96;</span><br></pre></td></tr></table></figure>
-<h4 id="创建"><a href="#创建" class="headerlink" title="创建"></a>创建</h4><p> 递归<br> 先创建好自己的叶子节点自己才能创建好<br> <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"> void create_tree(int l,int r,int root)&#123;</span><br><span class="line">	if(l&#x3D;&#x3D;r)&#123;</span><br><span class="line">		tree[root].l&#x3D;l;</span><br><span class="line">		tree[root].r&#x3D;r;</span><br><span class="line">		t[root].data&#x3D;a[l];return ;</span><br><span class="line"> &#125;</span><br><span class="line"> mid&#x3D;(l+r)&#x2F;2;</span><br><span class="line"> create_tree(l,mid,2*root);</span><br><span class="line"> create_tree(mid+1,r,2*root+1);</span><br><span class="line"> tree[root].data&#x3D;tree[2*root]+tree[2*root+1];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<h4 id="更新"><a href="#更新" class="headerlink" title="更新"></a>更新</h4><p>从根节点开始查询，找到后向上回溯更新</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">void  update(int root,int n,int x)</span><br><span class="line">  &#123;</span><br><span class="line">  	if(t[root].l&#x3D;&#x3D;tree[root].r)</span><br><span class="line">  	&#123;</span><br><span class="line">  		tree[root].data&#x3D;x;</span><br><span class="line">  		return ;</span><br><span class="line">   &#125;</span><br><span class="line">   if(mid&gt;&#x3D;n)update(2*root,n,x);</span><br><span class="line">   else update(2*root+1,n,x);</span><br><span class="line">   tree[root].data&#x3D;tree[2*root].data+tree[2*root+1].data</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h4 id="查找"><a href="#查找" class="headerlink" title="查找"></a>查找</h4><p>查找某一个区间的和</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">int inquire(int l,int r,int root)</span><br><span class="line"> &#123;</span><br><span class="line"> 	if(t[root].l&gt;&#x3D;l&amp;&amp;t[root].r&lt;&#x3D;r)return t[root].data;</span><br><span class="line"> 	mid&#x3D;(l+r)&#x2F;2;</span><br><span class="line">         int sum&#x3D;0;</span><br><span class="line"> 	if(mid&gt;&#x3D;r) sum&#x3D;inquire(l,r,2*root);</span><br><span class="line"> 	else if(mid&lt;l)sum+&#x3D;inquire(l,r,2*root+1);</span><br><span class="line"> 	else return sum;</span><br><span class="line">   &#125;  </span><br><span class="line">&#96;</span><br></pre></td></tr></table></figure>
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">algorithm</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/algorithm//" class="article-tag-list-link color5">algorithm</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/04/11/%E7%BA%BF%E6%AE%B5%E6%A0%91/">展开全文 >></a>
         </p>
       
 
