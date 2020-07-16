@@ -154,6 +154,100 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="n-快速幂" class="article article-type-n  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/04/22/%E5%BF%AB%E9%80%9F%E5%B9%82/">快速幂</a>
+    </h1>
+  
+
+        
+        <a href="/2020/04/22/%E5%BF%AB%E9%80%9F%E5%B9%82/" class="archive-article-date">
+  	<time datetime="2020-04-22T11:06:45.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-22</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="快速幂"><a href="#快速幂" class="headerlink" title="快速幂"></a>快速幂</h1><p>快速幂，二进制取幂（Binary Exponentiation，也称平方法），是一个在o(logn)的时间内计算2^n 的小技巧，而暴力的计算需要o(n)的时间。而这个技巧也常常用在非计算的场景，因为它可以应用在任何具有结合律的运算中。其中显然的是它可以应用于模意义下取幂、矩阵幂等运算。<br>要理解这里一般就要想计算机中的二进制储存<br>左移右移是乘二除二的操作</p>
+<h2 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h2><p>下面我是按着自己的理解说的<br>举个例子</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">3^13&#x3D;3^(1101)2&#x3D;3^8*3^4*3^1</span><br></pre></td></tr></table></figure>
+<p>所以这里只要算出来三个数即可<br>其中</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">3^n&#x3D;3^n&#x2F;2^2*3 n是奇数时</span><br><span class="line">3^n&#x3D;3^n&#x2F;2 ^2 n是偶数数时</span><br></pre></td></tr></table></figure>
+<p>其实这里也可以考虑左移和右移的规律<br>根据规律<br>得到下面的代码</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">binpow</span><span class="params">(<span class="keyword">int</span> a ,<span class="keyword">int</span> b)</span></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(b==<span class="number">0</span>)<span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">int</span> x=binpow(a,b/<span class="number">2</span>)</span><br><span class="line">    <span class="keyword">if</span>(b%<span class="number">2</span>==<span class="number">0</span>)<span class="keyword">return</span> x*x;</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">return</span> x*x*a;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>非递归</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">int binpow(int a,int b)&#123;</span><br><span class="line">    if(b&#x3D;&#x3D;0)return 1;</span><br><span class="line">    int res&#x3D;1;</span><br><span class="line">    while(b&gt;0)&#123;</span><br><span class="line">        if(b&amp;1)res&#x3D;res*a;</span><br><span class="line">        a&#x3D;a*a;</span><br><span class="line">        b&gt;&gt;&#x3D;2;</span><br><span class="line">    &#125;</span><br><span class="line">    return res;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="扩展"><a href="#扩展" class="headerlink" title="扩展"></a>扩展</h2><h3 id="模意义下大整数乘法"><a href="#模意义下大整数乘法" class="headerlink" title="模意义下大整数乘法"></a>模意义下大整数乘法</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">a*b&#x3D;</span><br><span class="line">1, &#x3D;0 a&#x3D;0</span><br><span class="line">2.&#x3D;a&#x2F;2*b a&gt;0&amp;&amp;a是偶数</span><br><span class="line">3.&#x3D;a&#x2F;2*b +b a&gt;0&amp;&amp;a是奇数</span><br></pre></td></tr></table></figure>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">algorithm</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/algorithm//" class="article-tag-list-link color5">algorithm</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/04/22/%E5%BF%AB%E9%80%9F%E5%B9%82/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-蓝桥杯模拟" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
