@@ -6,16 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Archives | 张大牙のblog</title>
+  <title>personal rank | 张大牙のblog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="不完美但也无所谓">
-<meta property="og:type" content="website">
-<meta property="og:title" content="张大牙のblog">
-<meta property="og:url" content="http://yoursite.com/archives/index.html">
+  <meta name="description" content="personal rank基于图的推荐化算法 原理讲解背景用户行为很容易表示为图（二分图）图在个性化推荐领域作用很显著二分图在我的匈牙利算法文章中有分为user,itemperson rank 可以比较出对于userA,itemC和itemE哪个更值得推荐分析为何可以从二分图中找出重要程度1.可以在二分图中找出两个顶点之间的连通路径数，数目越多越重要2.两个顶点之间的连通路径长度，长度约短越重要3">
+<meta property="og:type" content="article">
+<meta property="og:title" content="personal rank">
+<meta property="og:url" content="http://yoursite.com/2020/07/17/personal-rank/index.html">
 <meta property="og:site_name" content="张大牙のblog">
-<meta property="og:description" content="不完美但也无所谓">
+<meta property="og:description" content="personal rank基于图的推荐化算法 原理讲解背景用户行为很容易表示为图（二分图）图在个性化推荐领域作用很显著二分图在我的匈牙利算法文章中有分为user,itemperson rank 可以比较出对于userA,itemC和itemE哪个更值得推荐分析为何可以从二分图中找出重要程度1.可以在二分图中找出两个顶点之间的连通路径数，数目越多越重要2.两个顶点之间的连通路径长度，长度约短越重要3">
 <meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2020-07-17T08:04:21.000Z">
+<meta property="article:modified_time" content="2020-07-17T08:05:04.835Z">
 <meta property="article:author" content="张大牙">
+<meta property="article:tag" content="推荐算法">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="张大牙のblog" type="application/atom+xml">
@@ -152,36 +155,66 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
+            <article id="post-personal-rank" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
   
+    <h1 class="article-title" itemprop="name">
+      personal rank
+    </h1>
   
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2020" class="archive-year">2020</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/07/17/personal-rank/" class="archive-article-date">
+
+        
+        <a href="/2020/07/17/personal-rank/" class="archive-article-date">
   	<time datetime="2020-07-17T08:04:21.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-17</time>
 </a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/07/17/personal-rank/">personal rank</a>
-    </h1>
-  
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="personal-rank"><a href="#personal-rank" class="headerlink" title="personal rank"></a>personal rank</h2><p>基于图的推荐化算法</p>
+<h4 id="原理讲解"><a href="#原理讲解" class="headerlink" title="原理讲解"></a>原理讲解</h4><p><strong>背景</strong><br>用户行为很容易表示为图（二分图）<br>图在个性化推荐领域作用很显著<br><strong>二分图</strong><br>在我的匈牙利算法文章中有<br>分为user,item<br>person rank 可以比较出对于userA,itemC和itemE哪个更值得推荐<br><strong>分析</strong><br>为何可以从二分图中找出重要程度<br>1.可以在二分图中找出两个顶点之间的连通路径数，数目越多越重要<br>2.两个顶点之间的连通路径长度，长度约短越重要<br>3.两个顶点之间连通路径经过顶点的出度 越小越重要<br><strong>算法抽象</strong><br>对用户A进行个性化推荐，从用户A节点开始在用户物品二分图random walk,以alpha的概率从A的出边中等概率选择有走过去，到达物品a,然后有alpha的概率继续从顶点a的出边以中等概率游走到下一个节点，比如用户B，或者（1-alpha）概率回到A<br>personal rank可以写成矩阵的形式，这样方便同时迭代计算</p>
+<h4 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h4><p><strong>转化为二分图</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">import numpy as np</span><br><span class="line">import pandas as pd</span><br><span class="line">import os</span><br><span class="line"></span><br><span class="line">def get_graph_from_data(input_file):#获取二分图 返回dict：（userA:(item1:1,item2:1)）</span><br><span class="line">    if not os.path.exists(input_file):</span><br><span class="line">        return &#123;&#125;</span><br><span class="line">    graph&#x3D;&#123;&#125;</span><br><span class="line">    fp&#x3D;open(input_file)</span><br><span class="line">    linenum&#x3D;0</span><br><span class="line">    for line in fp:</span><br><span class="line">        if linenum&#x3D;&#x3D;0:</span><br><span class="line">            linenum+&#x3D;1</span><br><span class="line">            continue</span><br><span class="line">        item&#x3D;line.strip().split(&#39;,&#39;)</span><br><span class="line">        if len(item)&lt;3:</span><br><span class="line">            continue</span><br><span class="line">        userid,itemid,rating&#x3D;item[0],&quot;item_&quot;+item[1],item[2]</span><br><span class="line">        if float(rating)&lt;4:</span><br><span class="line">            continue</span><br><span class="line">        if userid not in graph:</span><br><span class="line">            graph[userid]&#x3D;&#123;&#125;</span><br><span class="line">        graph[userid][itemid]&#x3D;1</span><br><span class="line">        if itemid not in graph:</span><br><span class="line">            graph[itemid]&#x3D;&#123;&#125;</span><br><span class="line">        graph[itemid][userid]&#x3D;1</span><br><span class="line">    fp.close()</span><br><span class="line">    return graph</span><br><span class="line">    </span><br><span class="line"> get_graph_from_data(r&#39;C:\Users\Lenovo\Desktop\推荐算法\ml-latest-small\ratings.csv&#39;)</span><br></pre></td></tr></table></figure>
+<p><strong>基本公式算法</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">import operator</span><br><span class="line">def personal_rank(graph,root,alpha,iter_num,recom_num&#x3D;10):#返回一个字典，key:itemid,value:pr</span><br><span class="line">    rank&#x3D;&#123;&#125;</span><br><span class="line">    rank&#x3D;&#123;point:0.0 for point in graph&#125;</span><br><span class="line">    rank[root]&#x3D;1.0</span><br><span class="line">    recom_result&#x3D;&#123;&#125;</span><br><span class="line">    for iter_index in range(iter_num):</span><br><span class="line">        tmp_rank&#x3D;&#123;&#125;</span><br><span class="line">        tmp_rank&#x3D;&#123;point:0.0 for point in graph&#125;</span><br><span class="line">        for out_point,out_dict in graph.items():</span><br><span class="line">            for inner_point,value in graph[out_point].items():</span><br><span class="line">                tmp_rank[inner_point]+&#x3D;round(alpha*float(rank[out_point])&#x2F;(1.0*len(out_point)),4)</span><br><span class="line">                if inner_point&#x3D;&#x3D;root:</span><br><span class="line">                    tmp_rank[inner_point]+&#x3D;round(1-alpha)</span><br><span class="line">        if tmp_rank&#x3D;&#x3D;rank:</span><br><span class="line">            break;</span><br><span class="line">        rank&#x3D;tmp_rank</span><br><span class="line">    right_num&#x3D;0</span><br><span class="line">    for zuhe in sorted(rank.items(),key&#x3D;operator.itemgetter(1),reverse &#x3D; True):</span><br><span class="line">        point,pr_score&#x3D;zuhe[0],zuhe[1]</span><br><span class="line">        if len(point.split(&#39;_&#39;))&lt;2:</span><br><span class="line">            continue</span><br><span class="line">        if point in graph[root]:</span><br><span class="line">            continue</span><br><span class="line">        recom_result[point]&#x3D;pr_score</span><br><span class="line">        right_num+&#x3D;1;</span><br><span class="line">        if right_num&#x3D;&#x3D;10:</span><br><span class="line">            break;</span><br><span class="line">    return recom_result</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">def get_one_user_recom():</span><br><span class="line">    alpha&#x3D;0.6</span><br><span class="line">    graph&#x3D;get_graph_from_data(r&#39;C:\Users\Lenovo\Desktop\推荐算法\ml-latest-small\ratings.csv&#39;)</span><br><span class="line">    iter_num&#x3D;10</span><br><span class="line">    root&#x3D;&#39;1&#39;</span><br><span class="line">    print(personal_rank(graph,root,alpha,iter_num,recom_num&#x3D;10))</span><br></pre></td></tr></table></figure>
+<p><strong>用矩阵计算</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line">def graph_to_m(graph):</span><br><span class="line">    #返回稀疏矩阵M</span><br><span class="line">    vertex&#x3D;graph.keys()</span><br><span class="line">    address_dict&#x3D;&#123;&#125;</span><br><span class="line">    for index in range(len(vertex)):</span><br><span class="line">        adress_dict[vertex[index]]&#x3D;index</span><br><span class="line">    row&#x3D;[]</span><br><span class="line">    col&#x3D;[]</span><br><span class="line">    data&#x3D;[]</span><br><span class="line">    for element_i in graph:</span><br><span class="line">        weight&#x3D;round(1.0&#x2F;len(graph(element_i)),3)</span><br><span class="line">        row_index&#x3D;address_dict[element_i]</span><br><span class="line">        for element_j in graph[element_i]:</span><br><span class="line">            col_index&#x3D;adress_dict[element_j]</span><br><span class="line">            row.append(row_index)</span><br><span class="line">            col.append(col_index)</span><br><span class="line">            data.append(weight)</span><br><span class="line">    row&#x3D;np.array(row)</span><br><span class="line">    col&#x3D;np.array(col)</span><br><span class="line">    data&#x3D;np.array(data)</span><br><span class="line">    m&#x3D;coo_matrix((data,(row,col)),shape&#x3D;(total_len,total_len))</span><br><span class="line">    return m,vertex,adress_dict</span><br><span class="line">    </span><br><span class="line">  def mat_all_point(m_mat,vertex,alpha):</span><br><span class="line">        #get E-alpha*m_mat.T</span><br><span class="line">        #返回稀疏矩阵</span><br><span class="line">        total_len&#x3D;len(vertex)</span><br><span class="line">        row&#x3D;[]</span><br><span class="line">        for index in range(total_len):</span><br><span class="line">            row.append(index)</span><br><span class="line">            col.append(index)</span><br><span class="line">            data.append(1)</span><br><span class="line">        row&#x3D;np.array(row)</span><br><span class="line">        col&#x3D;np.array(col)</span><br><span class="line">        data&#x3D;np.array(data)</span><br><span class="line">        eye_t&#x3D;coo_matrix((data,(row,col)),shape&#x3D;(total_len,total_len))</span><br><span class="line">        return eye_t.tocsr()-alpha*m_mat.transpose()</span><br><span class="line">#eye_t.tocsr()方便快速计算</span><br><span class="line"></span><br><span class="line">m,vertex,address_dict&#x3D;graph_to_m(graph)</span><br><span class="line">mat_all_point(m,vertex,0.8)</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">from scipy.sparse.linalg import gmres</span><br><span class="line">def personal_rank_mat(graph,root,alpha,recom_num&#x3D;10):</span><br><span class="line">    #返回字典：key:itemid value:pr</span><br><span class="line">    m,vertex,address_dict&#x3D;graph_to_m(graph)</span><br><span class="line">    if root not in adress_dict:</span><br><span class="line">        return &#123;&#125;</span><br><span class="line">    mat_all &#x3D; mat_all_point(m,vertex,alpha)</span><br><span class="line">    index &#x3D; adress_dict[root]</span><br><span class="line">    inital_list&#x3D;[[0] for index in range(len(vertex))]]</span><br><span class="line">    initial_list[index]&#x3D;[1]</span><br><span class="line">    r_zero&#x3D;np.array(initial_list)</span><br><span class="line">    </span><br><span class="line">    res&#x3D;gmres(mat_util,r_zero,tol&#x3D;1e-8)[0]</span><br><span class="line">    for index in range(len(res)):</span><br><span class="line">        point &#x3D; vertex[index]</span><br><span class="line">        if len(point.strip(),split(&#39;,&#39;))&lt;2:</span><br><span class="line">            continue</span><br><span class="line">        if point in graph[root]:</span><br><span class="line">            continue</span><br><span class="line">        score_dict[point]&#x3D;round(res[index],3)</span><br><span class="line">    for zuhe in sorted(score_dict.items(),key&#x3D;operator.itemgetter(1),reverse&#x3D;True)[:recom_num]:</span><br><span class="line">        point,score&#x3D;zuhe[0],zuhe[1]</span><br><span class="line">        recom_dict[point]&#x3D;score</span><br><span class="line">    return recom_dict</span><br></pre></td></tr></table></figure>
+<p><strong>transpose()函数</strong><br>transpose()函数的作用就是调换数组的行列值的索引值，类似于求矩阵的转置：</p>
 
-        <div class="article-info info-on-right">
-          
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -193,364 +226,105 @@
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2020/07/17/personal-rank/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/07/16/lfm/" class="archive-article-date">
-  	<time datetime="2020-07-16T02:06:33.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-16</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="/2020/07/16/lfm/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">lfm</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
+        
+        
+    </div>
+</aside>
+
+
+
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/07/16/lfm/">lfm</a>
-    </h1>
+  
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">推荐算法</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/07/14/%E5%9F%BA%E4%BA%8E%E7%94%A8%E6%88%B7%E7%9A%84%E5%8D%8F%E5%90%8C%E8%BF%87%E6%BB%A4/" class="archive-article-date">
-  	<time datetime="2020-07-14T00:58:13.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-14</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/07/14/%E5%9F%BA%E4%BA%8E%E7%94%A8%E6%88%B7%E7%9A%84%E5%8D%8F%E5%90%8C%E8%BF%87%E6%BB%A4/">基于用户的协同过滤</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">推荐算法</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/07/14/%E7%BC%BA%E5%A4%B1%E5%80%BC%E5%A1%AB%E5%85%85/" class="archive-article-date">
-  	<time datetime="2020-07-14T00:57:50.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-14</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/07/14/%E7%BC%BA%E5%A4%B1%E5%80%BC%E5%A1%AB%E5%85%85/">缺失值填充</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">推荐算法</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/07/12/%E6%8E%A8%E8%8D%90%E7%AE%97%E6%B3%95%E4%B8%80%E4%BA%9B%E6%A6%82%E5%BF%B5/" class="archive-article-date">
-  	<time datetime="2020-07-12T01:07:30.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-12</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/07/12/%E6%8E%A8%E8%8D%90%E7%AE%97%E6%B3%95%E4%B8%80%E4%BA%9B%E6%A6%82%E5%BF%B5/">推荐算法一些概念</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">推荐算法</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/07/11/%E6%8E%A8%E8%8D%90%E7%AE%97%E6%B3%95%E6%A6%82%E8%BF%B0/" class="archive-article-date">
-  	<time datetime="2020-07-11T07:48:11.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-11</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/07/11/%E6%8E%A8%E8%8D%90%E7%AE%97%E6%B3%95%E6%A6%82%E8%BF%B0/">推荐算法概述</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">推荐算法</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/07/11/%E7%88%AC%E8%99%AB/" class="archive-article-date">
-  	<time datetime="2020-07-11T00:10:28.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-11</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/07/11/%E7%88%AC%E8%99%AB/">爬虫</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">python</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/07/06/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/" class="archive-article-date">
-  	<time datetime="2020-07-06T01:25:49.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-06</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/07/06/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/">正则表达式</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">python</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/07/05/DataFrame/" class="archive-article-date">
-  	<time datetime="2020-07-05T09:26:38.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-05</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/07/05/DataFrame/">DataFrame</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">python</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/07/04/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" class="archive-article-date">
-  	<time datetime="2020-07-04T06:58:31.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-04</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/07/04/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/">动态规划</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">algorithm</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-    
-    <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/archives/page/2/">2</a><a class="extend next" rel="next" href="/archives/page/2/">Next &amp;raquo;</a>
-    </nav>
   
 
 
@@ -574,8 +348,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
