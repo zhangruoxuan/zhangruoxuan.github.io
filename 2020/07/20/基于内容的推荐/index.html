@@ -6,16 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Archives: 2020 | 张大牙のblog</title>
+  <title>基于内容的推荐 | 张大牙のblog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="不完美但也无所谓">
-<meta property="og:type" content="website">
-<meta property="og:title" content="张大牙のblog">
-<meta property="og:url" content="http://yoursite.com/archives/2020/index.html">
+  <meta name="description" content="基于内容推荐算法背景以前写过的CF LFM PERSONAL RANK算法都属于邻域推荐 item2vec是基于深度学习的算法">
+<meta property="og:type" content="article">
+<meta property="og:title" content="基于内容的推荐">
+<meta property="og:url" content="http://yoursite.com/2020/07/20/%E5%9F%BA%E4%BA%8E%E5%86%85%E5%AE%B9%E7%9A%84%E6%8E%A8%E8%8D%90/index.html">
 <meta property="og:site_name" content="张大牙のblog">
-<meta property="og:description" content="不完美但也无所谓">
+<meta property="og:description" content="基于内容推荐算法背景以前写过的CF LFM PERSONAL RANK算法都属于邻域推荐 item2vec是基于深度学习的算法">
 <meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2020-07-20T08:34:52.000Z">
+<meta property="article:modified_time" content="2020-07-20T09:15:25.711Z">
 <meta property="article:author" content="张大牙">
+<meta property="article:tag" content="推荐算法">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="张大牙のblog" type="application/atom+xml">
@@ -140,74 +143,85 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-基于内容的推荐" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2020" class="archive-year">2020</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/07/20/%E8%AF%84%E4%BB%B7/" class="archive-article-date">
-  	<time datetime="2020-07-20T09:13:54.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-20</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/07/20/%E8%AF%84%E4%BB%B7/">评价</a>
+    <h1 class="article-title" itemprop="name">
+      基于内容的推荐
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">推荐算法</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/07/20/%E5%9F%BA%E4%BA%8E%E5%86%85%E5%AE%B9%E7%9A%84%E6%8E%A8%E8%8D%90/" class="archive-article-date">
+        
+        <a href="/2020/07/20/%E5%9F%BA%E4%BA%8E%E5%86%85%E5%AE%B9%E7%9A%84%E6%8E%A8%E8%8D%90/" class="archive-article-date">
   	<time datetime="2020-07-20T08:34:52.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-20</time>
 </a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/07/20/%E5%9F%BA%E4%BA%8E%E5%86%85%E5%AE%B9%E7%9A%84%E6%8E%A8%E8%8D%90/">基于内容的推荐</a>
-    </h1>
-  
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="基于内容推荐算法"><a href="#基于内容推荐算法" class="headerlink" title="基于内容推荐算法"></a>基于内容推荐算法</h2><p><strong>背景</strong><br>以前写过的CF LFM PERSONAL RANK算法都属于邻域推荐 item2vec是基于深度学习的算法</p>
+<a id="more"></a>
+<ul>
+<li>思路简单，可解释强</li>
+<li>用户推荐的独立性</li>
+<li>问世较早，流行度高</li>
+</ul>
+<p>缺点：</p>
+<ul>
+<li>扩展性差，很难完成跨领域的推荐</li>
+<li>需要积累用户行为</li>
+</ul>
+<p><strong>主体流程介绍</strong><br>item刻画：</p>
+<ul>
+<li>关键词刻画</li>
+<li>类别刻画</li>
+</ul>
+<p>用户刻画：</p>
+<ul>
+<li>长期短期行为</li>
+<li>静态动态特性</li>
+</ul>
+<p>线上推荐–将最及时相关的信息推荐<br><strong>技术要点</strong><br>item刻画：<br>1.opic finding:<br>分词–命名实体识别（排名选出top）<br>2.类别划分：<br>利用文本信息lr cnn</p>
+<p>用户刻画：<br>找到感兴趣的关键词和分类<br>注意时间衰点–不同时间行为的权重不同</p>
+<p>线上推荐：<br>1.找到用户喜欢的topk个分类<br>2.得到分类下最好的k个item（每个分类下k是不同的）<br><strong>工具函数</strong><br>item 平均评分</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">def get_ave_score(input_file):</span><br><span class="line">    if not os.path.exists(input_file):</span><br><span class="line">        return &#123;&#125;</span><br><span class="line">    fp&#x3D;open(input_file)</span><br><span class="line">    linenum&#x3D;0</span><br><span class="line">    ave_score&#x3D;&#123;&#125;</span><br><span class="line">    score&#x3D;&#123;&#125;</span><br><span class="line">    for line in fp:</span><br><span class="line">        if linenum&#x3D;&#x3D;0:</span><br><span class="line">            linenum+&#x3D;1</span><br><span class="line">            continue</span><br><span class="line">        item&#x3D;line.strip().split(&#39;,&#39;)</span><br><span class="line">        if len(item)&lt;3:</span><br><span class="line">            continue</span><br><span class="line">        userid,itemid,rating&#x3D;item[0],item[1],float(item[2])</span><br><span class="line">        if itemid not in ave_score:</span><br><span class="line">            score[itemid]&#x3D;[0,0]</span><br><span class="line">        score[userid][0]+&#x3D;rating</span><br><span class="line">        score[userid][1]+&#x3D;1</span><br><span class="line">    fp.close()</span><br><span class="line">    for itemid,ratings in score:</span><br><span class="line">        ave_score[itemid]&#x3D;round(score[itemid][0]&#x2F;score[itemid][1])</span><br><span class="line">    return ave_score</span><br></pre></td></tr></table></figure>
+<p><strong>得到每个类别中平均分较高的</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line">def get_item_cate(ave_score,input_file):</span><br><span class="line">    #返回值有两个：dict:key itemid value dict(key:cate value:radio)</span><br><span class="line">    # dict :key cate value[itemid1,itemif2..]</span><br><span class="line">    if not os.path.exists(input_file):</span><br><span class="line">        returin &#123;&#125;,&#123;&#125;</span><br><span class="line">    fp&#x3D;open(input_file)</span><br><span class="line">    item_cate&#x3D;&#123;&#125;</span><br><span class="line">    record&#x3D;&#123;&#125;</span><br><span class="line">    topk&#x3D;10</span><br><span class="line">    linenum&#x3D;0</span><br><span class="line">    cate_rating_sort&#x3D;&#123;&#125;</span><br><span class="line">    for line in fp:</span><br><span class="line">        if linenum&#x3D;&#x3D;0:</span><br><span class="line">            linenum+&#x3D;1</span><br><span class="line">        item&#x3D;line.strip().split(&#39;,&#39;)</span><br><span class="line">        if len(item)&lt;3:</span><br><span class="line">            continue</span><br><span class="line">        itemid&#x3D;item[0]</span><br><span class="line">        cate_str&#x3D;item[2]</span><br><span class="line">        cate&#x3D;cate_str.strip().split(&#39;|&#39;)</span><br><span class="line">        ratio&#x3D;round(1&#x2F;len(cate),3)</span><br><span class="line">        if itenid not in item_cate:</span><br><span class="line">            item_cate[itemid]&#x3D;&#123;&#125;</span><br><span class="line">        for fix_cate in cate:</span><br><span class="line">            item_cate[itemid][fix_cate]&#x3D;ratio</span><br><span class="line">    fp.close()</span><br><span class="line">    for itemid in item_cate[itemid]:</span><br><span class="line">        if cate not in record:</span><br><span class="line">            record[cate]&#x3D;&#123;&#125;</span><br><span class="line">        itemid_rating &#x3D; ave_score.get(itemid,0)</span><br><span class="line">        record[cate][itemid]&#x3D;item_rating</span><br><span class="line">    for cate in record:</span><br><span class="line">        if cate not in cate_item_sort:</span><br><span class="line">            cate_item_sort&#x3D;[]</span><br><span class="line">        for zuhe in sorted(record[cate].items(),key&#x3D;operator.itemgetter(1),reverse&#x3D;True)[:topk]</span><br><span class="line">        cate_item_sort[cate].append(zuhe[0])</span><br><span class="line">    return item_cate,cate_item_sort</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line">#返回字典 key:userid value [(cate,ratio),(cate1,ratio)]</span><br><span class="line">def get_up(item_cate,input_file):</span><br><span class="line">    if not os.path.exists(input_file):</span><br><span class="line">        return &#123;&#125;</span><br><span class="line">    fp &#x3D; open(input_file)</span><br><span class="line">    linenum&#x3D;0</span><br><span class="line">    record&#x3D;&#123;&#125;</span><br><span class="line">    up&#x3D;&#123;&#125;</span><br><span class="line">    for line in fp:</span><br><span class="line">        if linenum &#x3D; &#x3D; 0:</span><br><span class="line">            linenum+&#x3D;1</span><br><span class="line">            continue</span><br><span class="line">        item &#x3D; line.strip(),split(&#39;,&#39;)</span><br><span class="line">        if len(item)&lt;0:</span><br><span class="line">            continue</span><br><span class="line">        userid,itemid,rating,timestamp &#x3D; item[0],item[1],float(item[2]),int(item[3])</span><br><span class="line">        if rating&lt;4.0 :</span><br><span class="line">            continue</span><br><span class="line">        if itemid not in item_cate:</span><br><span class="line">            continue</span><br><span class="line">        time_score &#x3D; get_time_score(timestamp)</span><br><span class="line">        if userid not in record :</span><br><span class="line">            record[userid]&#x3D;&#123;&#125;</span><br><span class="line">        for fix_cate in item_cate[item]</span><br><span class="line">            if fix_cate not in record[userid]:</span><br><span class="line">                record[userid][fic_cate]&#x3D;0</span><br><span class="line">            record[userid][fix_cate]+&#x3D;rating*time_score*item_cate[itemid][fix_cate]</span><br><span class="line">    fp.close()</span><br><span class="line">    for useid in record:</span><br><span class="line">        total_score&#x3D;0</span><br><span class="line">        if userid not in up:</span><br><span class="line">            up[userid]&#x3D;&#123;&#125;</span><br><span class="line">        for  zuhe in sorted(record[userid].items(),key&#x3D;operator.itemgetter(1),reverse&#x3D;True)[:topk]</span><br><span class="line">            up[ueserid].append((zuhe[0],zuhe[1]))</span><br><span class="line">            total_score+&#x3D;zuhe[1]</span><br><span class="line">        for index in range(len(up[userid])):</span><br><span class="line">            up[userid][index][1]&#x3D;round(up[userid][index][1]&#x2F;total_score,3)</span><br><span class="line">    return up</span><br><span class="line"> </span><br><span class="line"> def get_time_score(timestamp):</span><br><span class="line">    fix_time_stamp&#x3D;1476086345#时间戳里的最大值</span><br><span class="line">    total_sec&#x3D;24*60*60</span><br><span class="line">    delta&#x3D;(fix_time_stamp-timestamp)&#x2F;total_sec</span><br><span class="line">    return delta</span><br></pre></td></tr></table></figure>
+<p><strong>返回推荐结果</strong><br>在实际中，基于内容的推荐是要把用户刻画存在 KV，item倒排存到搜索引擎中，推荐是实时的</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">def recom(cate_item_sort,up,userid,topk&#x3D;10):</span><br><span class="line">    #返回字典：key:userid value[item1,item2..]</span><br><span class="line">    if userid not in up:</span><br><span class="line">        return []</span><br><span class="line">    recom_list&#x3D;&#123;&#125;</span><br><span class="line">    if userid not in recom_result:</span><br><span class="line">        recom_result[userid]&#x3D;[]</span><br><span class="line">    for zuhe in up[userid]:</span><br><span class="line">        cate&#x3D;zuhe[0]</span><br><span class="line">        num&#x3D;int(topk*zuhe[1])+1</span><br><span class="line">        if cate not in cate_item_sort:</span><br><span class="line">            continue</span><br><span class="line">        recom_list&#x3D;cate_item_sort[cate][:num]</span><br><span class="line">        recom_result[userid]+&#x3D;recom_list</span><br><span class="line">    return recom_result</span><br></pre></td></tr></table></figure>
+      
 
-        <div class="article-info info-on-right">
-          
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -219,326 +233,114 @@
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2020/07/20/%E5%9F%BA%E4%BA%8E%E5%86%85%E5%AE%B9%E7%9A%84%E6%8E%A8%E8%8D%90/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/07/17/personal-rank/" class="archive-article-date">
-  	<time datetime="2020-07-17T08:04:21.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-17</time>
-</a>
+<nav id="article-nav">
+  
+    <a href="/2020/07/20/%E8%AF%84%E4%BB%B7/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          评价
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2020/07/17/personal-rank/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">personal rank</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
+        
+        
+    </div>
+</aside>
+
+
+
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/07/17/personal-rank/">personal rank</a>
-    </h1>
+  
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">推荐算法</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/07/16/lfm/" class="archive-article-date">
-  	<time datetime="2020-07-16T02:06:33.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-16</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/07/16/lfm/">lfm</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">推荐算法</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/07/14/%E5%9F%BA%E4%BA%8E%E7%94%A8%E6%88%B7%E7%9A%84%E5%8D%8F%E5%90%8C%E8%BF%87%E6%BB%A4/" class="archive-article-date">
-  	<time datetime="2020-07-14T00:58:13.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-14</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/07/14/%E5%9F%BA%E4%BA%8E%E7%94%A8%E6%88%B7%E7%9A%84%E5%8D%8F%E5%90%8C%E8%BF%87%E6%BB%A4/">基于用户的协同过滤</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">推荐算法</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/07/14/%E7%BC%BA%E5%A4%B1%E5%80%BC%E5%A1%AB%E5%85%85/" class="archive-article-date">
-  	<time datetime="2020-07-14T00:57:50.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-14</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/07/14/%E7%BC%BA%E5%A4%B1%E5%80%BC%E5%A1%AB%E5%85%85/">缺失值填充</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">推荐算法</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/07/12/%E6%8E%A8%E8%8D%90%E7%AE%97%E6%B3%95%E4%B8%80%E4%BA%9B%E6%A6%82%E5%BF%B5/" class="archive-article-date">
-  	<time datetime="2020-07-12T01:07:30.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-12</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/07/12/%E6%8E%A8%E8%8D%90%E7%AE%97%E6%B3%95%E4%B8%80%E4%BA%9B%E6%A6%82%E5%BF%B5/">推荐算法一些概念</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">推荐算法</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/07/11/%E6%8E%A8%E8%8D%90%E7%AE%97%E6%B3%95%E6%A6%82%E8%BF%B0/" class="archive-article-date">
-  	<time datetime="2020-07-11T07:48:11.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-11</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/07/11/%E6%8E%A8%E8%8D%90%E7%AE%97%E6%B3%95%E6%A6%82%E8%BF%B0/">推荐算法概述</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">推荐算法</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/07/11/%E7%88%AC%E8%99%AB/" class="archive-article-date">
-  	<time datetime="2020-07-11T00:10:28.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-11</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/07/11/%E7%88%AC%E8%99%AB/">爬虫</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">python</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/07/06/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/" class="archive-article-date">
-  	<time datetime="2020-07-06T01:25:49.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-06</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/07/06/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/">正则表达式</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">python</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-    
-    <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/archives/2020/page/2/">2</a><a class="extend next" rel="next" href="/archives/2020/page/2/">Next &amp;raquo;</a>
-    </nav>
   
 
 
@@ -562,8 +364,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
