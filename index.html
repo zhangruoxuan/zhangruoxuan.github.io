@@ -142,6 +142,109 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-语言模型" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/08/19/%E8%AF%AD%E8%A8%80%E6%A8%A1%E5%9E%8B/">语言模型</a>
+    </h1>
+  
+
+        
+        <a href="/2020/08/19/%E8%AF%AD%E8%A8%80%E6%A8%A1%E5%9E%8B/" class="archive-article-date">
+  	<time datetime="2020-08-19T00:04:08.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-08-19</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="语言模型"><a href="#语言模型" class="headerlink" title="语言模型"></a>语言模型</h1><p>laguage model : a system that predicts the next word<br><img src="en-resource://database/646:1" alt="4526a34bb97e1f02c36d5798126cc266.png"></p>
+<p><img src="/images/N-gram.jpg" alt="alt"></p>
+<h2 id="n-gram"><a href="#n-gram" class="headerlink" title="n-gram"></a>n-gram</h2><p>根据上下文预测当前词语</p>
+<h4 id="出现的两类稀疏性问题"><a href="#出现的两类稀疏性问题" class="headerlink" title="出现的两类稀疏性问题"></a>出现的两类稀疏性问题</h4><p><strong>分子为零</strong><br>给每一个词语一个较小的数量值<br><strong>分母为零</strong><br>减小n（上下文词语的数量）<br><strong>注意</strong><br>N过大会使稀疏性问题更加严重 n一般不大于5</p>
+<h2 id="神经网络"><a href="#神经网络" class="headerlink" title="神经网络"></a>神经网络</h2><p>input:x1,x2,x3…xt<br>output: dist of the next word p(xt+1|xt….x1)<br><strong>过程</strong><br><img src="/images/%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C.jpg" alt="alt"></p>
+<p><strong>优点</strong></p>
+<ul>
+<li>没有稀疏性问题</li>
+<li>对模型的存储较小</li>
+</ul>
+<p><strong>问题</strong></p>
+<ul>
+<li>n很小</li>
+<li>改变窗口的同时也要改变W</li>
+<li>根据矩阵乘法 我们可以知道 W的每一列和输入的分别乘每一个单词 它们独立的 这样找不到他们共同的联系</li>
+</ul>
+<h2 id="递归神经网络-RNN"><a href="#递归神经网络-RNN" class="headerlink" title="递归神经网络 RNN"></a>递归神经网络 RNN</h2><p>普通神经网络都只能单独的取处理一个个的输入，前一个输入和后一个输入是完全没有关系的。但是，某些任务需要能够更好的处理序列的信息，即前面的输入和后面的输入是有关系的。比如，当我们在理解一句话意思时，孤立的理解这句话的每个词是不够的，我们需要处理这些词连接起来的整个序列； 当我们处理视频的时候，我们也不能只单独的去分析每一帧，而要分析这些帧连接起来的整个序列。<br><img src="en-resource://database/642:1" alt="641d2acdd5aaf9af8eab7fb4ea3db883.png"><br><img src="en-resource://database/644:1" alt="db329090b468de015f9087b45db7538d.png"><br><img src="/images/RNN1.jpg" alt="alt"></p>
+<p><strong>优点</strong></p>
+<ul>
+<li><p>can process any length input </p>
+</li>
+<li><p>model size does not increase for longer input</p>
+</li>
+<li><p><em>缺点*</em></p>
+</li>
+<li><p>慢</p>
+</li>
+<li><p>diffcultt to access information from many steps back<br><img src="en-resource://database/648:1" alt="f9e01f50a1e05b3fe8e4b1639f071012.png"></p>
+</li>
+</ul>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">自然语言处理</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/08/19/%E8%AF%AD%E8%A8%80%E6%A8%A1%E5%9E%8B/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-评价" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -826,82 +929,6 @@
 
 
   
-    <article id="post-正则表达式" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/07/06/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/">正则表达式</a>
-    </h1>
-  
-
-        
-        <a href="/2020/07/06/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/" class="archive-article-date">
-  	<time datetime="2020-07-06T01:25:49.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-06</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="正则表达式"><a href="#正则表达式" class="headerlink" title="正则表达式"></a>正则表达式</h2><p>爬虫中很有用的获取文本信息</p>
-        
-          <a class="article-more-a" href="/2020/07/06/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">python</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/07/06/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next &amp;raquo;</a>
@@ -1004,6 +1031,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">推荐算法</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">自然语言处理</a>
               </li>
             
             <div class="clearfix"></div>
